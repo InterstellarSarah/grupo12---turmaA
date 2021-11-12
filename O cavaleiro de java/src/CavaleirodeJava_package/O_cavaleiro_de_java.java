@@ -6,7 +6,7 @@ import java.util.Collections;
 
 public class O_cavaleiro_de_java {
 	//Para rodar o jogo sem o delay nas mensagens, pode mudar o valor destas 3 variáveis para 0;
-	static int temp_dialog =70, temp_narrativa = 150, temp_transicao = 25; 
+	static int temp_dialog = 5, temp_narrativa = 150, temp_transicao = 25; 
 	
 	//O menu do jogo
 	public static void main(String[] args) throws Exception {
@@ -58,9 +58,9 @@ public class O_cavaleiro_de_java {
    //Aqui é aonde o jogo todo se passa
 	public static void jogo()throws Exception{
 	    Scanner entrada = new Scanner(System.in);
-	    int seleciona, cafezinho;
-	    // Cafezinho = vida do personagem
-	    cafezinho = 100;
+	    int seleciona;
+	
+	    
 	    
 	    //esse trecho a seguir é apenas um protótipo de como vai funcionar o jogo, ainda não foi adicionado nenhum desafio nele
 		Delay("Você acorda com um homem muito velho e barbudo te levantando e gritando\n"
@@ -86,6 +86,83 @@ public class O_cavaleiro_de_java {
 		df_SCrpg();
 		
 		Delay("A fissura se fecha, mas é possivel se escutar uma voz\n ??? : Maldito seja!!, os magos iram conhecer toda agonia deste mundo", TimeUnit.MILLISECONDS, temp_dialog);
+		Delay("\nVelho Barbudo: Seja quem for devemos impedir que venha para nosso mundo, enfim, venha comigo, irei leva-lo para o seu proximo destino", TimeUnit.MILLISECONDS, temp_dialog);
+		Delay("\nVelho Barbudo: Bem-Vindo a cidade do pico da montanha, aqui antes era apenas uma parada, mas varias pessoas começaram\n  "
+				+ " aparecer neste lugal para resolver a crise com os dragões, enfim, há muito oque fazer para impedir os dragões\n "
+				+ " boa sorte \n ... \n a próposito, meu nome é ********* ", TimeUnit.MILLISECONDS, temp_dialog);
+		Parte_central();
+		
+	}
+	
+	public static void Parte_central() throws InterruptedException {
+		Scanner entrada = new Scanner(System.in);
+		int decicao;
+		
+		System.out.println("\n Para onde ir agora?\n  \n 1- Oeste \n 2- Leste");
+		decicao = entrada.nextInt();
+		
+		switch(decicao) {
+		case 1:
+			Parte_Oeste();
+			break;
+		case 2: Parte_Leste();
+			break;
+		}
+	}
+	
+	public static void Parte_Oeste() throws InterruptedException {
+		Scanner entrada = new Scanner(System.in);
+		int decicao;
+		String decicao_definitivo;
+		System.out.println("\nParte Oeste da cidade: Esta parte esta em pedaços, mas há um grupo de pessoas reunida discutindo algo aparentemente sério\n"
+				+ " 1- Ir para o centro da cidade \n 2- Perguntar as pessoas o que esta acontecendo ");
+		decicao = entrada.nextInt();
+		switch(decicao) {
+		case 1:
+			Parte_central();
+			break;
+		case 2:
+			Delay("Figurante Genérico: Existe um dragão que traiu sua raça, seu nome é sif e ele vive isolado dentro de uma caverna\n"
+					+ " ao noroeste daqui, estamos decidim quem ira confronta-lo", TimeUnit.MILLISECONDS, temp_dialog);
+			System.out.println("\n1- Por que um dragão trairia sua própria raça? \n2- por que não vamos todos juntos? \n"
+					+ "3- Eu irei visita-lo");
+			
+		    decicao = entrada.nextInt();
+		    switch(decicao) {
+		    case 1:
+		    	
+		    	break;
+		    case 2:
+		    	Delay("Temos que estar aqui para contra-atacar caso os dragões nos ataquem, não podemos ir todos juntos", TimeUnit.MILLISECONDS, temp_dialog);
+		    	break;
+		    case 3:
+		    	Delay("você esta certo disto?, esta provavelmente é uma jornada sem volta", TimeUnit.MILLISECONDS, temp_dialog);
+		    	System.out.print("\n1- Sim \n2- Não ");
+		    	decicao = entrada.nextInt();
+		    	
+		    	if(decicao == 1) {
+		    		Reta_final();
+		    	}else {
+		    		Delay("Ainda não estou pronto", TimeUnit.MILLISECONDS, temp_dialog);
+		    		Parte_Oeste();
+		    	}
+		    	break;
+		    }
+		   
+			break;
+		}
+	}
+	
+	public static void Parte_Leste() {
+		Scanner entrada = new Scanner(System.in);
+		int decicao;
+		System.out.println("Parte Leste da cidade: Parece que é aqui aonde os aventureiros vem para reabastecer seus suprimentos \n"
+				+ " há uma loja e um  , ");
+		
+	}
+	
+	public static void Reta_final() {
+		System.out.println("RETA FINAL");
 	}
 	
 	public static void df_ShuffleRpg() {
@@ -135,19 +212,19 @@ public class O_cavaleiro_de_java {
 				break;
 			case "b":
 			case "B":
-				n = 0;
+				n = 1;
 				break;
 			case "c":
 			case "C":
-				n = 0;
+				n = 2;
 				break;
 			case "d":
 			case "D":
-				n = 0;
+				n = 3;
 				break;
 			case "e":
 			case "E":
-				n = 0;
+				n = 4;
 				break;
 			default:
 				System.out.println("Escolha inválida!");
@@ -169,7 +246,7 @@ public class O_cavaleiro_de_java {
 		boolean sair = true;
 		
 		
-			System.out.printf("\nQuais expressões no switch são opcionais? \n ");
+			System.out.printf("Quais expressões no switch são opcionais? \n ");
 		
 			ArrayList<String> lista = new ArrayList<String>();
 				lista.add("Break e Default;");  // resposta correta
@@ -197,6 +274,7 @@ public class O_cavaleiro_de_java {
 						break;
 					case 4:
 						System.out.println("e) " + lista.get(i));
+						break;
 			}
 		}
 			System.out.printf("\n Digite aqui a resposta correta: ");
@@ -210,19 +288,19 @@ public class O_cavaleiro_de_java {
 				break;
 			case "b":
 			case "B":
-				n = 0;
+				n = 1;
 				break;
 			case "c":
 			case "C":
-				n = 0;
+				n = 2;
 				break;
 			case "d":
 			case "D":
-				n = 0;
+				n = 3;
 				break;
 			case "e":
 			case "E":
-				n = 0;
+				n = 4;
 				break;
 			default:
 				System.out.println("Escolha inválida!");
@@ -235,9 +313,19 @@ public class O_cavaleiro_de_java {
 			}
 			
 		} while(sair);
+	}
+		
+	public static void DesafioArray() {
+		
+		
 		
 	}
 	
+	public static void DesafioFor() {
+		
+		
+		
+	}
 	
 	//Este método é o responsavel para dar um "delay" nas messagens do jogo
 	public static void Delay(String mensagem, TimeUnit unit, long tempo_mensagem) throws InterruptedException {
