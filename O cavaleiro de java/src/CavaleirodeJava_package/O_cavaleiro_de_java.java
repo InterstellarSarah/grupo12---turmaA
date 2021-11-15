@@ -4,9 +4,13 @@ import java.util.concurrent.TimeUnit;
 import java.util.ArrayList;
 import java.util.Collections;
 
+
+
+
 public class O_cavaleiro_de_java {
 	//Para rodar o jogo sem o delay nas mensagens, pode mudar o valor destas 3 variáveis para 0;
-	static int temp_dialog = 5, temp_narrativa = 150, temp_transicao = 25; 
+	static int cafeh = 5;
+	static int temp_dialog = cafeh * 1, temp_narrativa = 150, temp_transicao = 25; 
 	
 	//O menu do jogo
 	public static void main(String[] args) throws Exception {
@@ -18,7 +22,7 @@ public class O_cavaleiro_de_java {
 		Delay("\nO Cavaleiro de Java\n", TimeUnit.MILLISECONDS, temp_transicao);
 		System.out.println("\nA- Jogar \nB- Instrução \nC- Créditos \nD- Sair");
 		
-		seleciona = entrada.next();
+		seleciona = ColetarString();
 		
 		switch (seleciona){
 			case "a":
@@ -89,7 +93,7 @@ public class O_cavaleiro_de_java {
 		Delay("\nVelho Barbudo: Seja quem for devemos impedir que venha para nosso mundo, enfim, venha comigo, irei leva-lo para o seu proximo destino", TimeUnit.MILLISECONDS, temp_dialog);
 		Delay("\nVelho Barbudo: Bem-Vindo a cidade do pico da montanha, aqui antes era apenas uma parada, mas varias pessoas começaram\n  "
 				+ " aparecer neste lugal para resolver a crise com os dragões, enfim, há muito oque fazer para impedir os dragões\n "
-				+ " boa sorte \n ... \n a próposito, meu nome é ********* ", TimeUnit.MILLISECONDS, temp_dialog);
+				+ " boa sorte \n ... \n a próposito, meu nome é Tryndamare ", TimeUnit.MILLISECONDS, temp_dialog);
 		Parte_central();
 		
 	}
@@ -127,7 +131,7 @@ public class O_cavaleiro_de_java {
 			System.out.println("\n1- Por que um dragão trairia sua própria raça? \n2- por que não vamos todos juntos? \n"
 					+ "3- Eu irei visita-lo");
 			
-		    decicao = entrada.nextInt();
+		    decicao = ColetarInt();
 		    switch(decicao) {
 		    case 1:
 		    	
@@ -153,14 +157,35 @@ public class O_cavaleiro_de_java {
 		}
 	}
 	
-	public static void Parte_Leste() {
+	public static void Parte_Leste()  throws InterruptedException{
 		Scanner entrada = new Scanner(System.in);
 		int decicao;
-		System.out.println("Parte Leste da cidade: Parece que é aqui aonde os aventureiros vem para reabastecer seus suprimentos \n"
-				+ " há uma loja e um  , ");
-		
+		Delay("Partr seus suprimentos \n"
+				+ " há uma Taverna e um ferreiro. \n1-ir para o ferreiro \n2-ire Leste da cidade: Parece que é aqui aonde os aventureiros"
+				+ "/n vem para reabastece para a lojinha ", TimeUnit.MILLISECONDS, temp_dialog);
+		 decicao = ColetarInt();
+		    switch(decicao) {
+		    case 1:
+		    	
+		    case 2:
+		    	
+		    }
+	
+		    
 	}
 	
+	public static void TavernaDaUcraniana() throws InterruptedException{
+		Delay("\nAo entrar logo se é possivel ver uma sala repleta de móveis rústicos, chifres nas paredes, e castiçais de metal descendo/n do teto, a"
+				+ " iluminição das tochas e velas chama sua atenção, além do cheiro da ceia que foi preparada, há uma moça no bar.",TimeUnit.MILLISECONDS, temp_dialog);
+		
+	
+		
+		
+		Delay("\nUkraniana:Bem-vindo aventureiro, o que na minha lojinha seria de seu agrado?",TimeUnit.MILLISECONDS, temp_dialog);
+		
+		
+		
+	}	
 	public static void Reta_final() {
 		System.out.println("RETA FINAL");
 	}
@@ -315,6 +340,17 @@ public class O_cavaleiro_de_java {
 		} while(sair);
 	}
 		
+	
+	public static void DesafioDoTroll()throws InterruptedException{
+		
+		Delay("" ,TimeUnit.MILLISECONDS, temp_dialog);
+		
+		/*
+		if(B > C && D > A && C+D > A+B && C > 0 && D > 0 && A % 2 == 0 
+		*/
+	}
+	
+	
 	public static void DesafioArray() {
 		
 		
@@ -326,7 +362,24 @@ public class O_cavaleiro_de_java {
 		
 		
 	}
-	
+	static String ColetarString() {
+		Scanner entrada = new Scanner(System.in);
+		String word;
+		word = entrada.next();
+		return word;
+	}
+	 static double ColetarDouble() {
+			Scanner entrada = new Scanner(System.in);
+			double num;
+			num = entrada.nextDouble();
+			return num;
+		}
+	 static int ColetarInt() {
+			Scanner entrada = new Scanner(System.in);
+			int num;
+			num = entrada.nextInt();
+			return num;
+		}
 	//Este método é o responsavel para dar um "delay" nas messagens do jogo
 	public static void Delay(String mensagem, TimeUnit unit, long tempo_mensagem) throws InterruptedException {
         for (char caractere : mensagem.toCharArray()) {
