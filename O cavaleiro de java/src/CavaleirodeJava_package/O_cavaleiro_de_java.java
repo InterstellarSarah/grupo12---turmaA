@@ -1,236 +1,285 @@
 package CavaleirodeJava_package;
+
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 import java.util.ArrayList;
 import java.util.Collections;
 
-
-
-
 public class O_cavaleiro_de_java {
-	//Para rodar o jogo sem o delay nas mensagens, pode mudar o valor destas 3 vari·veis para 0;
-	static int cafeh = 5;
-	static int temp_dialog = cafeh * 1, temp_narrativa = 150, temp_transicao = 25; 
-	
-	//O menu do jogo
+	// Para rodar o jogo sem o delay nas mensagens, pode mudar o valor destas 3
+	// vari√°veis para 0;
+	static int Cafeh = 1;
+	static int temp_dialog = Cafeh * 1, temp_narrativa = 150, temp_transicao = 25;
+	static boolean ColarCompleto = false,DesafioDoTroll01=false,	
+	DesafioDoTroll02 = false;
+	static String NomePersonagem;
+
+	// O menu do jogo
 	public static void main(String[] args) throws Exception {
+		DesafioDoTroll02();
 		Scanner entrada = new Scanner(System.in);
-		
+
 		String seleciona;
 		int sair = 0;
 		do {
-		Delay("\nO Cavaleiro de Java\n", TimeUnit.MILLISECONDS, temp_transicao);
-		System.out.println("\nA- Jogar \nB- InstruÁ„o \nC- CrÈditos \nD- Sair");
-		
-		seleciona = ColetarString();
-		
-		switch (seleciona){
+			Delay("\nO Cavaleiro de Java\n", TimeUnit.MILLISECONDS, temp_transicao);
+			System.out.println("\nA- Jogar \nB- Instru√ß√£o \nC- Cr√©ditos \nD- Sair");
+
+			seleciona = ColetarString();
+
+			switch (seleciona) {
 			case "a":
 			case "A":
 				jogo();
-		        break;
+				break;
 			case "b":
 			case "B":
 				Delay("Para desfrutar da gameplay dessa aventura, \n"
-						+ "digite as opÁıes que lhe foi apresentado na tela\n", TimeUnit.MILLISECONDS,temp_transicao );
+						+ "digite as op√ß√µes que lhe foi apresentado na tela\n", TimeUnit.MILLISECONDS, temp_transicao);
 				break;
 			case "c":
-		    case "C":
-		    	System.out.println("O Cavaleiro de java");
-		    	System.out.println("Grupo 12");
-		    	System.out.println("Integrantes: "); System.out.println("        ");
-		    	System.out.println("Eduardo Ramos \nJosÈ Guerra \nRafael Almeida \nSarah RodriguÍs \nSamuel Colina \n");
-		    	break;
-		    	
+			case "C":
+				System.out.println("O Cavaleiro de java");
+				System.out.println("Grupo 12");
+				System.out.println("Integrantes: ");
+				System.out.println("        ");
+				System.out.println("Eduardo Ramos \nJos√© Guerra \nRafael Duarte \nSarah Rodrigu√™s \nSamuel Colina \n");
+				break;
+
 			case "d":
 			case "D":
-				Delay("VocÍ deseja mesmo sair?", TimeUnit.MILLISECONDS, temp_transicao);
+				Delay("Voc√™ deseja mesmo sair?", TimeUnit.MILLISECONDS, temp_transicao);
 				System.out.println("\nS / N");
-			seleciona = entrada.next();	
-			
-			if(seleciona.equals("S") || seleciona.equals("s")) {
-				Delay("AtÈ um outro dia", TimeUnit.MILLISECONDS, temp_dialog);
-			sair++;
-			}
-		    break;
-			default:
-				System.out.println("Por favor, selecione uma opÁ„o valida");
+				seleciona = entrada.next();
+
+				if (seleciona.equals("S") || seleciona.equals("s")) {
+					Delay("At√© um outro dia", TimeUnit.MILLISECONDS, temp_dialog);
+					sair++;
+				}
 				break;
-		}
-		}while(sair == 0);
+			default:
+				System.out.println("Por favor, selecione uma op√ß√£o valida");
+				break;
+			}
+		} while (sair == 0);
 	}
-   //Aqui È aonde o jogo todo se passa
-	public static void jogo()throws Exception{
-	    Scanner entrada = new Scanner(System.in);
-	    int seleciona;
-	
-	    
-	    
-	    //esse trecho a seguir È apenas um protÛtipo de como vai funcionar o jogo, ainda n„o foi adicionado nenhum desafio nele
-		Delay("VocÍ acorda com um homem muito velho e barbudo te levantando e gritando\n"
-				+ "Velho Barbudo: N„o h· tempo para explicar, vocÍ precisa fechar essa fissura", TimeUnit.MILLISECONDS, temp_dialog);
+
+	// Aqui √© aonde o jogo todo se passa
+	public static void jogo() throws Exception {
+		Scanner entrada = new Scanner(System.in);
+		int seleciona;
+
+		// esse trecho a seguir √© apenas um prot√≥tipo de como vai funcionar o jogo,
+		// ainda n√£o foi adicionado nenhum desafio nele
+		Delay("Voc√™ acorda com um homem muito velho e barbudo te levantando e gritando\n"
+				+ "Velho Barbudo: N√£o h√° tempo para explicar, voc√™ precisa fechar essa fissura", TimeUnit.MILLISECONDS,
+				temp_dialog);
 		do {
-		System.out.print("\n 1- Quem È vocÍ? \n 2- Oque esta acontecendo?! \n 3- Eu n„o sei como fechala \n 4- Irei fechala");
-		seleciona = entrada.nextInt();
-		if(seleciona == 1) {
-			Delay("Velho barbudo: Como eu disse, n„o a tempo para explicar!, feche essa fissura", TimeUnit.MILLISECONDS, temp_dialog);
-		}
-		
-		if(seleciona == 2) {
-			Delay("Velho barbudo: Se esta fissura n„o for fechada, nÛs iremos morrer aqui, e sÛ vocÍ pode fechala\n ent„o se apresse", TimeUnit.MILLISECONDS, temp_dialog);
-		}
-		
-		if(seleciona == 3) {
-			Delay("Velho barbudo: Concentre-se apenas na lÛgica, pois vocÍ j· possui a forÁa", TimeUnit.MILLISECONDS, temp_dialog);
-		}
-		
-		
-		}while(seleciona != 4);
-		//Aqui È aonde se inicia com o primeiro desafio
+			System.out.print(
+					"\n 1- Quem √© voc√™? \n 2- Oque esta acontecendo?! \n 3- Eu n√£o sei como fechala \n 4- Irei fechala");
+			seleciona = entrada.nextInt();
+			if (seleciona == 1) {
+				Delay("Velho barbudo: Como eu disse, n√£o a tempo para explicar!, feche essa fissura",
+						TimeUnit.MILLISECONDS, temp_dialog);
+			}
+
+			if (seleciona == 2) {
+				Delay("Velho barbudo: Se esta fissura n√£o for fechada, n√≥s iremos morrer aqui, e s√≥ voc√™ pode fechala\n ent√£o se apresse",
+						TimeUnit.MILLISECONDS, temp_dialog);
+			}
+
+			if (seleciona == 3) {
+				Delay("Velho barbudo: Concentre-se apenas na l√≥gica, pois voc√™ j√° possui a for√ßa",
+						TimeUnit.MILLISECONDS, temp_dialog);
+			}
+
+		} while (seleciona != 4);
+		// Aqui √© aonde se inicia com o primeiro desafio
 		df_SCrpg();
-		
-		Delay("A fissura se fecha, mas È possivel se escutar uma voz\n ??? : Maldito seja!!, os magos iram conhecer toda agonia deste mundo", TimeUnit.MILLISECONDS, temp_dialog);
-		Delay("\nVelho Barbudo: Seja quem for devemos impedir que venha para nosso mundo, enfim, venha comigo, irei leva-lo para o seu proximo destino", TimeUnit.MILLISECONDS, temp_dialog);
-		Delay("\nVelho Barbudo: Bem-Vindo a cidade do pico da montanha, aqui antes era apenas uma parada, mas varias pessoas comeÁaram\n  "
-				+ " aparecer neste lugal para resolver a crise com os dragıes, enfim, h· muito oque fazer para impedir os dragıes\n "
-				+ " boa sorte \n ... \n a prÛposito, meu nome È Tryndamare ", TimeUnit.MILLISECONDS, temp_dialog);
+
+		Delay("A fissura se fecha, mas √© possivel se escutar uma voz\n ??? : Maldito seja!!, os magos iram conhecer toda agonia deste mundo",
+				TimeUnit.MILLISECONDS, temp_dialog);
+		Delay("\nVelho Barbudo: Seja quem for devemos impedir que venha para nosso mundo, enfim, venha comigo, irei leva-lo para o seu proximo destino",
+				TimeUnit.MILLISECONDS, temp_dialog);
+		Delay("\nVelho Barbudo: Bem-Vindo a cidade do pico da montanha, aqui antes era apenas uma parada, mas varias pessoas come√ßaram\n  "
+				+ " aparecer neste lugal para resolver a crise com os drag√µes, enfim, h√° muito oque fazer para impedir os drag√µes\n "
+				+ " boa sorte \n ... \n a pr√≥posito, meu nome √© Baal ", TimeUnit.MILLISECONDS, temp_dialog);
 		Parte_central();
-		
+
 	}
-	
+
 	public static void Parte_central() throws InterruptedException {
 		Scanner entrada = new Scanner(System.in);
 		int decicao;
-		
+
 		System.out.println("\n Para onde ir agora?\n  \n 1- Oeste \n 2- Leste");
 		decicao = entrada.nextInt();
-		
-		switch(decicao) {
+
+		switch (decicao) {
 		case 1:
 			Parte_Oeste();
 			break;
-		case 2: Parte_Leste();
+		case 2:
+			Parte_Leste();
 			break;
 		}
 	}
-	
+
 	public static void Parte_Oeste() throws InterruptedException {
 		Scanner entrada = new Scanner(System.in);
 		int decicao;
 		String decicao_definitivo;
-		System.out.println("\nParte Oeste da cidade: Esta parte esta em pedaÁos, mas h· um grupo de pessoas reunida discutindo algo aparentemente sÈrio\n"
-				+ " 1- Ir para o centro da cidade \n 2- Perguntar as pessoas o que esta acontecendo ");
+		System.out.println(
+				"\nParte Oeste da cidade: Esta parte esta em peda√ßos, mas h√° um grupo de pessoas reunida discutindo algo aparentemente s√©rio\n"
+						+ " 1- Ir para o centro da cidade \n 2- Perguntar as pessoas o que esta acontecendo ");
 		decicao = entrada.nextInt();
-		switch(decicao) {
+		switch (decicao) {
 		case 1:
 			Parte_central();
 			break;
 		case 2:
-			Delay("Figurante GenÈrico: Existe um drag„o que traiu sua raÁa, seu nome È sif e ele vive isolado dentro de uma caverna\n"
+			Delay("Figurante Gen√©rico: Existe um drag√£o que traiu sua ra√ßa, seu nome √© sif e ele vive isolado dentro de uma caverna\n"
 					+ " ao noroeste daqui, estamos decidim quem ira confronta-lo", TimeUnit.MILLISECONDS, temp_dialog);
-			System.out.println("\n1- Por que um drag„o trairia sua prÛpria raÁa? \n2- por que n„o vamos todos juntos? \n"
-					+ "3- Eu irei visita-lo");
-			
-		    decicao = ColetarInt();
-		    switch(decicao) {
-		    case 1:
-		    	
-		    	break;
-		    case 2:
-		    	Delay("Temos que estar aqui para contra-atacar caso os dragıes nos ataquem, n„o podemos ir todos juntos", TimeUnit.MILLISECONDS, temp_dialog);
-		    	break;
-		    case 3:
-		    	Delay("vocÍ esta certo disto?, esta provavelmente È uma jornada sem volta", TimeUnit.MILLISECONDS, temp_dialog);
-		    	System.out.print("\n1- Sim \n2- N„o ");
-		    	decicao = entrada.nextInt();
-		    	
-		    	if(decicao == 1) {
-		    		Reta_final();
-		    	}else {
-		    		Delay("Ainda n„o estou pronto", TimeUnit.MILLISECONDS, temp_dialog);
-		    		Parte_Oeste();
-		    	}
-		    	break;
-		    }
-		   
+			System.out
+					.println("\n1- Por que um drag√£o trairia sua pr√≥pria ra√ßa? \n2- por que n√£o vamos todos juntos? \n"
+							+ "3- Eu irei visita-lo");
+
+			decicao = ColetarInt();
+			switch (decicao) {
+			case 1:
+
+				break;
+			case 2:
+				Delay("Temos que estar aqui para contra-atacar caso os drag√µes nos ataquem, n√£o podemos ir todos juntos",
+						TimeUnit.MILLISECONDS, temp_dialog);
+				break;
+			case 3:
+				Delay("voc√™ esta certo disto?, esta provavelmente √© uma jornada sem volta", TimeUnit.MILLISECONDS,
+						temp_dialog);
+				System.out.print("\n1- Sim \n2- N√£o ");
+				decicao = entrada.nextInt();
+
+				if (decicao == 1) {
+					Reta_final();
+				} else {
+					Delay("Ainda n√£o estou pronto", TimeUnit.MILLISECONDS, temp_dialog);
+					Parte_Oeste();
+				}
+				break;
+			}
+
 			break;
 		}
 	}
-	
-	public static void Parte_Leste()  throws InterruptedException{
+
+	public static void Parte_Leste() throws InterruptedException {
 		Scanner entrada = new Scanner(System.in);
 		int decicao;
 		Delay("Partr seus suprimentos \n"
-				+ " h· uma Taverna e um ferreiro. \n1-ir para o ferreiro \n2-ire Leste da cidade: Parece que È aqui aonde os aventureiros"
+				+ " h√° uma Taverna e um ferreiro. \n1-ir para o ferreiro \n2-ire Leste da cidade: Parece que √© aqui aonde os aventureiros"
 				+ "/n vem para reabastece para a lojinha ", TimeUnit.MILLISECONDS, temp_dialog);
-		 decicao = ColetarInt();
-		    switch(decicao) {
-		    case 1:
-		    	
-		    case 2:
-		    	
-		    }
-	
-		    
+		decicao = ColetarInt();
+		switch (decicao) {
+		case 1:
+
+		case 2:
+
+		}
+
 	}
-	
-	public static void TavernaDaUcraniana() throws InterruptedException{
-		Delay("\nAo entrar logo se È possivel ver uma sala repleta de mÛveis r˙sticos, chifres nas paredes, e castiÁais de metal descendo/n do teto, a"
-				+ " iluminiÁ„o das tochas e velas chama sua atenÁ„o, alÈm do cheiro da ceia que foi preparada, h· uma moÁa no bar.",TimeUnit.MILLISECONDS, temp_dialog);
-		
-	
-		
-		
-		Delay("\nUkraniana:Bem-vindo aventureiro, o que na minha lojinha seria de seu agrado?",TimeUnit.MILLISECONDS, temp_dialog);
-		
-		
-		
-	}	
-	public static void Reta_final() {
+
+	public static void TavernaDaUcraniana() throws InterruptedException {
+		Delay("\nAo entrar logo se √© possivel ver uma sala repleta de m√≥veis r√∫sticos, chifres nas paredes, e casti√ßais de metal descendo/n do teto, a"
+				+ " ilumini√ß√£o das tochas e velas chama sua aten√ß√£o, al√©m do cheiro da ceia que foi preparada, h√° uma mo√ßa no bar.",
+				TimeUnit.MILLISECONDS, temp_dialog);
+
+		Delay("\nUkraniana:Bem-vindo aventureiro, o que na minha lojinha seria de seu agrado?", TimeUnit.MILLISECONDS,
+				temp_dialog);
+
+	}
+
+	public static void Reta_final()throws InterruptedException {
 		System.out.println("RETA FINAL");
 	}
-	
+
+	public static void BecoDoTroll() throws InterruptedException {
+		int decicao;
+		if(DesafioDoTroll01=false){
+		
+		Delay("\nDescri√ß√£o do troll ", TimeUnit.MILLISECONDS, temp_dialog);
+		
+			Delay("\n Llort: Olha s√≥ o que temos aqui, mais um dos privilegiados do reino, mas voc√™ parace despreparado,mas posso lhe ajudar,\n"
+				+ "Tenho uma charada sobre certe complexidade arcana,que tal fazermos uma aposta sim?\n1- N√£o tenho nada para apostar.\n2- Posso tentar. ",
+				TimeUnit.MILLISECONDS, temp_dialog);
+		decicao = ColetarInt();
+		switch (decicao) {
+		case 1:
+			Delay("\nLlort: Como n√£o voc√™ tem muito caf√© contigo.", TimeUnit.MILLISECONDS, temp_dialog);
+			Delay(NomePersonagem + "\nEu tenho " + Cafeh + "Comigo.", TimeUnit.MILLISECONDS, temp_dialog);
+			Delay("\nLlort:√â perfeito, podemos come√ßar?\n1-Posso tentar.\n2-N√£o, prefiro n√£o tentar.", TimeUnit.MILLISECONDS, temp_dialog);
+			decicao = ColetarInt();
+			switch (decicao) {
+			case 1:
+				DesafioDoTroll01();
+			case 2:
+			Delay("\nLlort: Tudo bem estarei aqui quando mudar de ideia.", TimeUnit.MILLISECONDS, temp_dialog);
+			Delay("\nVoc√™ deixa o beco", TimeUnit.MILLISECONDS, temp_dialog);
+			
+		}
+		case 2:
+			DesafioDoTroll01();		
+			
+		}
+		}else{
+			Delay("Llort: Se quiser o resto do colar dever√° responder mais uma de minhas charadas.", TimeUnit.MILLISECONDS, temp_dialog);
+			
+		}
+		
+			
+				
+		Parte_Leste();
+	}
 	public static void df_ShuffleRpg() {
 		Scanner entrada = new Scanner(System.in);
 		String alt;
 		boolean sair = true;
-		
-		
-			System.out.printf("	Existe no java uma funÁ„o para embaralhar conte˙dos e coleÁıes. Qual o nome da express„o?\n ");
-		
-			ArrayList<String> lista = new ArrayList<String>();
-				lista.add("Math.Random;");  // resposta correta
-				lista.add("Shuffle;");
-				lista.add("Sort;");
-				lista.add("Reverse;");
-				lista.add("Array;");
-			  //valores do array  
 
-		do{
-			Collections.shuffle(lista);      //sorteia as alternativas
-			for(int i = 0; i < lista.size(); i++){ //numera o array
-				switch (i){
-					case 0:
-						System.out.println("a) " + lista.get(i));
-						break;
-					case 1:
-						System.out.println("b) " + lista.get(i));
-						break;
-					case 2:
-						System.out.println("c) " + lista.get(i));
-						break;
-					case 3:
-						System.out.println("d) " + lista.get(i));
-						break;
-					case 4:
-						System.out.println("e) " + lista.get(i));
+		System.out.printf(
+				"	Existe no java uma fun√ß√£o para embaralhar conte√∫dos e cole√ß√µes. Qual o nome da express√£o?\n ");
+
+		ArrayList<String> lista = new ArrayList<String>();
+		lista.add("Math.Random;"); // resposta correta
+		lista.add("Shuffle;");
+		lista.add("Sort;");
+		lista.add("Reverse;");
+		lista.add("Array;");
+		// valores do array
+
+		do {
+			Collections.shuffle(lista); // sorteia as alternativas
+			for (int i = 0; i < lista.size(); i++) { // numera o array
+				switch (i) {
+				case 0:
+					System.out.println("a) " + lista.get(i));
+					break;
+				case 1:
+					System.out.println("b) " + lista.get(i));
+					break;
+				case 2:
+					System.out.println("c) " + lista.get(i));
+					break;
+				case 3:
+					System.out.println("d) " + lista.get(i));
+					break;
+				case 4:
+					System.out.println("e) " + lista.get(i));
+				}
 			}
-		}
 			System.out.printf("\n Digite aqui a resposta correta: ");
-				alt = entrada.next();
-				int n = 0;
-				//pega a resposta e compara com o numero da lista
-			switch (alt){
+			alt = entrada.next();
+			int n = 0;
+			// pega a resposta e compara com o numero da lista
+			switch (alt) {
 			case "a":
 			case "A":
 				n = 0;
@@ -252,61 +301,60 @@ public class O_cavaleiro_de_java {
 				n = 4;
 				break;
 			default:
-				System.out.println("Escolha inv·lida!");
-		}
-			if(lista.get(n).equals("Math.Random;")){ //compara a resposta com a alternativa
+				System.out.println("Escolha inv√°lida!");
+			}
+			if (lista.get(n).equals("Math.Random;")) { // compara a resposta com a alternativa
 				System.out.println("Resposta correta! :D");
 				sair = false;
-			}else {
+			} else {
 				System.out.println("Resposta incorreta! D:");
 			}
-			
-		} while(sair);
-		
+
+		} while (sair);
+
 	}
-	
-	public static void df_SCrpg() {
+
+	public static void df_SCrpg()throws InterruptedException {
 		Scanner entrada = new Scanner(System.in);
 		String alt;
 		boolean sair = true;
-		
-		
-			System.out.printf("Quais expressıes no switch s„o opcionais? \n ");
-		
-			ArrayList<String> lista = new ArrayList<String>();
-				lista.add("Break e Default;");  // resposta correta
-				lista.add("Case e Break;");
-				lista.add("Else e Case;");
-				lista.add("Default e While;");
-				lista.add("While e Else;");
-			  //valores do array  
 
-		do{
-			Collections.shuffle(lista);      //sorteia as alternativas
-			for(int i = 0; i < lista.size(); i++){ //numera o array
-				switch (i){
-					case 0:
-						System.out.println("a) " + lista.get(i));
-						break;
-					case 1:
-						System.out.println("b) " + lista.get(i));
-						break;
-					case 2:
-						System.out.println("c) " + lista.get(i));
-						break;
-					case 3:
-						System.out.println("d) " + lista.get(i));
-						break;
-					case 4:
-						System.out.println("e) " + lista.get(i));
-						break;
+		System.out.printf("Quais express√µes no switch s√£o opcionais? \n ");
+
+		ArrayList<String> lista = new ArrayList<String>();
+		lista.add("Break e Default;"); // resposta correta
+		lista.add("Case e Break;");
+		lista.add("Else e Case;");
+		lista.add("Default e While;");
+		lista.add("While e Else;");
+		// valores do array
+
+		do {
+			Collections.shuffle(lista); // sorteia as alternativas
+			for (int i = 0; i < lista.size(); i++) { // numera o array
+				switch (i) {
+				case 0:
+					System.out.println("a) " + lista.get(i));
+					break;
+				case 1:
+					System.out.println("b) " + lista.get(i));
+					break;
+				case 2:
+					System.out.println("c) " + lista.get(i));
+					break;
+				case 3:
+					System.out.println("d) " + lista.get(i));
+					break;
+				case 4:
+					System.out.println("e) " + lista.get(i));
+					break;
+				}
 			}
-		}
 			System.out.printf("\n Digite aqui a resposta correta: ");
-				alt = entrada.next();
-				int n = 0;
-				//pega a resposta e compara com o numero da lista
-			switch (alt){
+			alt = entrada.next();
+			int n = 0;
+			// pega a resposta e compara com o numero da lista
+			switch (alt) {
 			case "a":
 			case "A":
 				n = 0;
@@ -328,64 +376,207 @@ public class O_cavaleiro_de_java {
 				n = 4;
 				break;
 			default:
-				System.out.println("Escolha inv·lida!");
-		}
-			if(lista.get(n).equals("Break e Default;")){ //compara a resposta com a alternativa
+				System.out.println("Escolha inv√°lida!");
+			}
+			if (lista.get(n).equals("Break e Default;")) { // compara a resposta com a alternativa
 				System.out.println("Resposta correta! :D");
 				sair = false;
-			}else {
+			} else {
 				System.out.println("Resposta incorreta! D:");
 			}
-			
-		} while(sair);
+
+		} while (sair);
 	}
+
+	public static void DesafioDoTroll01() throws InterruptedException {
+		int perda;
 		
-	
-	public static void DesafioDoTroll()throws InterruptedException{
+		Delay("Llort: Vamos a minha pergunta:", TimeUnit.MILLISECONDS, temp_dialog);
+		boolean sair = true;
+		Delay("Ao se deparar com esta sequencia de IF\n \nif(B > C && D > A && C+D > A+B && C > 0 && D > 0 && A % 2 == 0 ) {"
+				+ "\nSystem.out.println(\"Valores aceitos\");"
+				+ "\n}else { "
+				+ "\nSystem.out.println(\"Valores n√£o aceitos\");"
+				+ "\n}\n \nquais destes valores seriam aceitos?", TimeUnit.MILLISECONDS, temp_dialog);
+
+		ArrayList<String> Lista = new ArrayList<String>();
+		Lista.add("Int A = 98, B = 99, C = 98,D = 102;");
+		Lista.add("Int A = 88, B = 100, C = 99,D = 78;");
+		Lista.add("Int A = 88, B = 99, C = 98,D = 90;");
+		Lista.add("Int A = 64, B = 94, C = 102,D = 91;");
+		Lista.add("Int A = 96, B = 95, C = 101,D = 102;");
 		
-		Delay("" ,TimeUnit.MILLISECONDS, temp_dialog);
-		
-		/*
-		if(B > C && D > A && C+D > A+B && C > 0 && D > 0 && A % 2 == 0 
-		*/
+		do {
+
+			Collections.shuffle(Lista); 
+			for (int i = 0; i < Lista.size(); i++) {
+				switch (i) {
+
+				case 0:
+					System.out.println("\nA) " + Lista.get(i));
+					break;
+
+				case 1:
+					System.out.println("B) " + Lista.get(i));
+					break;
+
+				case 2:
+					System.out.println("C) " + Lista.get(i));
+					break;
+
+				case 3:
+					System.out.println("D) " + Lista.get(i));
+					break;
+
+				case 4:
+					System.out.println("E) " + Lista.get(i));
+					break;
+				}
+			}
+			String alternativa =ColetarString();
+			int valorDeAlternativa = 0;
+
+			switch (alternativa.toLowerCase()) {
+
+			case "a":
+				valorDeAlternativa = 0;
+				break;
+
+			case "b":
+				valorDeAlternativa = 1;
+				break;
+
+			case "c":
+				valorDeAlternativa = 2;
+				break;
+
+			case "d":
+				valorDeAlternativa = 3;
+				break;
+
+			case "e":
+				valorDeAlternativa = 4;
+				break;
+
+			default:
+				System.out.println("Llort: Esperava voc√™ ser burro mas nem tanto, tenta denovo");
+				sair = true;
+				break;
+			}
+			if (Lista.get(valorDeAlternativa).equals("Int A = 98, B = 99, C = 98,D = 102;")) {
+
+				Delay("Llort: Como voc√™ acertou???\nN√£o quero saber, como prometido, sua recompensa:\n Voc√™ Ganhou um colar com gravuras de flores em volta"
+					+ "de um espa√ßo em branco.\n O que eu devo fazer com isso?e onde esta o resto do colar? ", TimeUnit.MILLISECONDS, temp_dialog);
+				
+				sair = false;
+			} else {
+				Delay("Llort: Voc√™ errou,Vai me passando os cafeinados", TimeUnit.MILLISECONDS, temp_dialog);
+				if (Cafeh > 1) {
+				perda = Cafeh - 1;
+				Cafeh = Cafeh -perda;
+				Delay("Voc√™ perdeu "+perda+"caf√©s" , TimeUnit.MILLISECONDS, temp_dialog);
+				}else {
+					Delay("\r\nGAME OVER - acabou o caf√©...\n‚òï" , TimeUnit.MILLISECONDS, temp_dialog);
+					System.exit(0);
+				}
+				
+				sair = false;
+			}
+
+		} while (sair);
+		DesafioDoTroll01=true;
 	}
-	
-	
-	public static void DesafioArray() {
+	public static void DesafioDoTroll02()throws InterruptedException {
+		Delay("Llort: Eu amo a magia dos IFs, ent√£o vamos com outra dele:", TimeUnit.MILLISECONDS, temp_dialog);
+		boolean sair = true;
+		Delay("\nO c√≥digo abaixo vai funcionar?"
+				+ "\n  if (N % i == 0) \n"
+				+ "System.out.println(\"Hello Word\");   ", TimeUnit.MILLISECONDS, temp_dialog);
+
+		ArrayList<String> Lista = new ArrayList<String>();
+		Lista.add("Sim");
+		Lista.add("Nao");
 		
+		do {
+
+			Collections.shuffle(Lista); 
+			for (int i = 0; i < Lista.size(); i++) {
+				switch (i) {
+
+				case 0:
+					System.out.println("\nA) " + Lista.get(i));
+					break;
+
+				case 1:
+					System.out.println("B) " + Lista.get(i));
+					break;
+				}
+			}
+			String alternativa =ColetarString();
+			int valorDeAlternativa = 0;
+
+			switch (alternativa.toLowerCase()) {
+
+			case "a":
+				valorDeAlternativa = 0;
+				break;
+
+			case "b":
+				valorDeAlternativa = 1;
+				break;
+			default:
+				System.out.println("\nLlort: Esperava voc√™ ser burro mas nem tanto, tenta denovo");
+				sair = true;
+				break;
+			}
+			if (Lista.get(valorDeAlternativa).equals("Sim")) {
+
+				Delay("\nLlort:parabens... \nLlort:A verdade √© que, eu n√£o sou bom com charadas, a primeira, √© minha unica, boa e verdadeira charada, tome seu pr√™mio...", TimeUnit.MILLISECONDS, temp_dialog);
+				
+				sair = false;
+			} else {
+				System.out.println("          Resposta errada, tente novamente");
+			}
+
+		} while (sair);
+		DesafioDoTroll02=true;
 		
 		
 	}
-	
-	public static void DesafioFor() {
-		
-		
-		
+	public static void DesafioArray()throws InterruptedException {
+
 	}
-	static String ColetarString() {
+
+	public static void DesafioFor() throws InterruptedException{
+
+	}
+	//Met√≥do criado para coleta de Strings
+	static String ColetarString() throws InterruptedException{
 		Scanner entrada = new Scanner(System.in);
 		String word;
 		word = entrada.next();
 		return word;
 	}
-	 static double ColetarDouble() {
-			Scanner entrada = new Scanner(System.in);
-			double num;
-			num = entrada.nextDouble();
-			return num;
-		}
-	 static int ColetarInt() {
-			Scanner entrada = new Scanner(System.in);
-			int num;
-			num = entrada.nextInt();
-			return num;
-		}
-	//Este mÈtodo È o responsavel para dar um "delay" nas messagens do jogo
-	public static void Delay(String mensagem, TimeUnit unit, long tempo_mensagem) throws InterruptedException {
-        for (char caractere : mensagem.toCharArray()) {
-        System.out.print(caractere);
-        unit.sleep(tempo_mensagem);
-    }
-        }
-}
 
+	static double ColetarDouble()throws InterruptedException{
+		Scanner entrada = new Scanner(System.in);
+		double num;
+		num = entrada.nextDouble();
+		return num;
+	}
+	//Met√≥do criado para coleta de Int
+	static int ColetarInt()throws InterruptedException {
+		Scanner entrada = new Scanner(System.in);
+		int num;
+		num = entrada.nextInt();
+		return num;
+	}
+
+	// Este m√©todo √© o responsavel para dar um "delay" nas messagens do jogo
+	public static void Delay(String mensagem, TimeUnit unit, long tempo_mensagem) throws InterruptedException {
+		for (char caractere : mensagem.toCharArray()) {
+			System.out.print(caractere);
+			unit.sleep(tempo_mensagem);
+		}
+	}
+}
