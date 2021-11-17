@@ -8,15 +8,15 @@ import java.util.Collections;
 public class O_cavaleiro_de_java {
 	// Para rodar o jogo sem o delay nas mensagens, pode mudar o valor destas 3
 	// variáveis para 0;
-	static int Cafeh = 1;
+
+	static int Cafeh = 3, TavernaDaUcraniana = 0, Score = 0;
 	static int temp_dialog = Cafeh * 1, temp_narrativa = 150, temp_transicao = 25;
-	static boolean ColarCompleto = false,DesafioDoTroll01=false,	
-	DesafioDoTroll02 = false;
+	static boolean ColarCompleto = false, DesafioDoTroll01 = false, DesafioDoTroll02 = false;
 	static String NomePersonagem;
 
 	// O menu do jogo
 	public static void main(String[] args) throws Exception {
-		DesafioDoTroll02();
+		TavernaDaUcraniana();
 		Scanner entrada = new Scanner(System.in);
 
 		String seleciona;
@@ -138,7 +138,7 @@ public class O_cavaleiro_de_java {
 			Parte_central();
 			break;
 		case 2:
-			Delay("Figurante Genérico: Existe um dragão que traiu sua raça, seu nome é sif e ele vive isolado dentro de uma caverna\n"
+			Delay("Campones: Existe um dragão que traiu sua raça, seu nome é sif e ele vive isolado dentro de uma caverna\n"
 					+ " ao noroeste daqui, estamos decidim quem ira confronta-lo", TimeUnit.MILLISECONDS, temp_dialog);
 			System.out
 					.println("\n1- Por que um dragão trairia sua própria raça? \n2- por que não vamos todos juntos? \n"
@@ -189,57 +189,105 @@ public class O_cavaleiro_de_java {
 	}
 
 	public static void TavernaDaUcraniana() throws InterruptedException {
-		Delay("\nAo entrar logo se é possivel ver uma sala repleta de móveis rústicos, chifres nas paredes, e castiçais de metal descendo/n do teto, a"
-				+ " iluminição das tochas e velas chama sua atenção, além do cheiro da ceia que foi preparada, há uma moça no bar.",
+		int decicao;
+		if (TavernaDaUcraniana == 0)
+			Delay("\nAo entrar logo se é possivel ver uma sala repleta de móveis rústicos, chifres nas paredes, e castiçais de metal descendo/n do teto, a"
+					+ " iluminição das tochas e velas chama sua atenção, além do cheiro da ceia que foi preparada, há uma moça no bar.",
+					TimeUnit.MILLISECONDS, temp_dialog);
+
+		Delay("\nUkraniana: Bem-vindo aventureiro, o que na minha taverna seria de seu agrado?\n1- Não tenho como pagar por nada \n2- sua companhia já me é bem agradável",
 				TimeUnit.MILLISECONDS, temp_dialog);
+		decicao = ColetarInt();
+		switch (decicao) {
+		case 1:
+			Delay("Ukraniana: Para aqueles que protegem nossa cidade, costumo ser generosa, escolha algo.\n1- Cerveja no chifre \n2- Hidromel \n3- velha pantera \n4- Velho barreiro \n5-Agua  ",
+					TimeUnit.MILLISECONDS, temp_dialog);
+			decicao = ColetarInt();
+			switch (decicao) {
+			case 1:
+				Delay("Ukraniana: A mais vendida daqui", TimeUnit.MILLISECONDS, temp_dialog);
+				break;
+			case 2:
+				Delay("Ukraniana: O povo daqui não tem muito, mas sabe produzir muito disto. ", TimeUnit.MILLISECONDS,
+						temp_dialog);
+				break;
+			case 3:
+				Delay("Ukraniana: ÉÉÉÉÉÉÉÉ DAS BOAS ", TimeUnit.MILLISECONDS, temp_dialog);
+				break;
+			case 4:
+				Delay("Ukraniana: Bem comum em uma terra distante daqui", TimeUnit.MILLISECONDS, temp_dialog);
+				break;
+			}
 
-		Delay("\nUkraniana:Bem-vindo aventureiro, o que na minha lojinha seria de seu agrado?", TimeUnit.MILLISECONDS,
-				temp_dialog);
+		case 2:
+			Delay("Ukraniana: ", TimeUnit.MILLISECONDS, temp_dialog);
+			break;
 
+		}
 	}
 
-	public static void Reta_final()throws InterruptedException {
+	public static void Reta_final() throws InterruptedException {
 		System.out.println("RETA FINAL");
 	}
 
 	public static void BecoDoTroll() throws InterruptedException {
 		int decicao;
-		if(DesafioDoTroll01=false){
-		
-		Delay("\nDescrição do troll ", TimeUnit.MILLISECONDS, temp_dialog);
-		
+		if (DesafioDoTroll01 = false) {
+
+			Delay("\nVocê ve um homem calvo, com armadura de couro, e ao seu lado um escudo com a gravura de uma águia acompanhado de uma lança.",
+					TimeUnit.MILLISECONDS, temp_dialog);
+
 			Delay("\n Llort: Olha só o que temos aqui, mais um dos privilegiados do reino, mas você parace despreparado,mas posso lhe ajudar,\n"
-				+ "Tenho uma charada sobre certe complexidade arcana,que tal fazermos uma aposta sim?\n1- Não tenho nada para apostar.\n2- Posso tentar. ",
-				TimeUnit.MILLISECONDS, temp_dialog);
-		decicao = ColetarInt();
-		switch (decicao) {
-		case 1:
-			Delay("\nLlort: Como não você tem muito café contigo.", TimeUnit.MILLISECONDS, temp_dialog);
-			Delay(NomePersonagem + "\nEu tenho " + Cafeh + "Comigo.", TimeUnit.MILLISECONDS, temp_dialog);
-			Delay("\nLlort:É perfeito, podemos começar?\n1-Posso tentar.\n2-Não, prefiro não tentar.", TimeUnit.MILLISECONDS, temp_dialog);
+					+ "Tenho uma charada sobre certe complexidade arcana,que tal fazermos uma aposta sim?\n1- Não tenho nada para apostar.\n2- Posso tentar. ",
+					TimeUnit.MILLISECONDS, temp_dialog);
 			decicao = ColetarInt();
 			switch (decicao) {
 			case 1:
-				DesafioDoTroll01();
+				Delay("\nLlort: Como não você tem muito café contigo.", TimeUnit.MILLISECONDS, temp_dialog);
+				Delay(NomePersonagem + "\nEu tenho " + Cafeh + "Comigo.", TimeUnit.MILLISECONDS, temp_dialog);
+				Delay("\nLlort:É perfeito, podemos começar?\n1-Posso tentar.\n2-Não, prefiro não tentar.",
+						TimeUnit.MILLISECONDS, temp_dialog);
+				decicao = ColetarInt();
+
+				switch (decicao) {
+				case 1:
+					DesafioDoTroll01();
+					break;
+				case 2:
+					Delay("\nLlort: Tudo bem estarei aqui quando mudar de ideia.", TimeUnit.MILLISECONDS, temp_dialog);
+					Delay("\nVocê deixa o beco", TimeUnit.MILLISECONDS, temp_dialog);
+					break;
+				default:
+					Delay("\nOpção inválida\nVocê deixa o beco", TimeUnit.MILLISECONDS, temp_dialog);
+					break;
+				}
 			case 2:
-			Delay("\nLlort: Tudo bem estarei aqui quando mudar de ideia.", TimeUnit.MILLISECONDS, temp_dialog);
-			Delay("\nVocê deixa o beco", TimeUnit.MILLISECONDS, temp_dialog);
-			
+				DesafioDoTroll01();
+				break;
+
+			}
+		} else {
+			Delay("Llort: Se quiser o resto do colar deverá responder mais uma de minhas charadas.\n1-Vou me arriscar \n2-Prefiro não tentar",
+					TimeUnit.MILLISECONDS, temp_dialog);
+			decicao = ColetarInt();
+			switch (decicao) {
+			case 1:
+				DesafioDoTroll02();
+				break;
+			case 2:
+				Delay("\nVocê deixa o beco", TimeUnit.MILLISECONDS, temp_dialog);
+				Parte_Leste();
+				break;
+			default:
+				Delay("\nOpção inválida\nVocê deixa o beco", TimeUnit.MILLISECONDS, temp_dialog);
+				break;
+			}
 		}
-		case 2:
-			DesafioDoTroll01();		
-			
-		}
-		}else{
-			Delay("Llort: Se quiser o resto do colar deverá responder mais uma de minhas charadas.", TimeUnit.MILLISECONDS, temp_dialog);
-			
-		}
-		
-			
-				
+
 		Parte_Leste();
 	}
-	public static void df_ShuffleRpg() {
+
+	public static int df_ShuffleRpg() throws InterruptedException {
 		Scanner entrada = new Scanner(System.in);
 		String alt;
 		boolean sair = true;
@@ -303,18 +351,26 @@ public class O_cavaleiro_de_java {
 			default:
 				System.out.println("Escolha inválida!");
 			}
-			if (lista.get(n).equals("Math.Random;")) { // compara a resposta com a alternativa
+			if (lista.get(n).equals("Shuffle;")) { // compara a resposta com a alternativa
 				System.out.println("Resposta correta! :D");
 				sair = false;
 			} else {
-				System.out.println("Resposta incorreta! D:");
+				if (Cafeh > 1) {
+					System.out.println("Resposta errada, tente novamente" + " Você só tem " + Cafeh + " cafés contigo");
+					Cafeh = Cafeh - 1;
+					Score = Score - 1;
+				} else {
+					Delay("\r\nGAME OVER - acabou o café...", TimeUnit.MILLISECONDS, temp_dialog);
+					System.exit(0);
+					
+				}
 			}
-
 		} while (sair);
-
+		Score = Score + 1;
+		return Score;
 	}
 
-	public static void df_SCrpg()throws InterruptedException {
+	public static int	 df_SCrpg() throws InterruptedException {
 		Scanner entrada = new Scanner(System.in);
 		String alt;
 		boolean sair = true;
@@ -382,22 +438,30 @@ public class O_cavaleiro_de_java {
 				System.out.println("Resposta correta! :D");
 				sair = false;
 			} else {
-				System.out.println("Resposta incorreta! D:");
+				if (Cafeh > 1) {
+					System.out.println("Resposta errada, tente novamente" + " Você só tem " + Cafeh + " cafés contigo");
+					Cafeh = Cafeh - 1;
+					Score = Score - 1;
+				} else {
+					Delay("\r\nGAME OVER - acabou o café...", TimeUnit.MILLISECONDS, temp_dialog);
+					System.exit(0);
+				}
 			}
 
 		} while (sair);
+		Score = Score + 1;
+		return Score;
 	}
 
-	public static void DesafioDoTroll01() throws InterruptedException {
+	public static boolean DesafioDoTroll01() throws InterruptedException {
 		int perda;
-		
+
 		Delay("Llort: Vamos a minha pergunta:", TimeUnit.MILLISECONDS, temp_dialog);
 		boolean sair = true;
 		Delay("Ao se deparar com esta sequencia de IF\n \nif(B > C && D > A && C+D > A+B && C > 0 && D > 0 && A % 2 == 0 ) {"
-				+ "\nSystem.out.println(\"Valores aceitos\");"
-				+ "\n}else { "
-				+ "\nSystem.out.println(\"Valores não aceitos\");"
-				+ "\n}\n \nquais destes valores seriam aceitos?", TimeUnit.MILLISECONDS, temp_dialog);
+				+ "\nSystem.out.println(\"Valores aceitos\");" + "\n}else { "
+				+ "\nSystem.out.println(\"Valores não aceitos\");" + "\n}\n \nquais destes valores seriam aceitos?",
+				TimeUnit.MILLISECONDS, temp_dialog);
 
 		ArrayList<String> Lista = new ArrayList<String>();
 		Lista.add("Int A = 98, B = 99, C = 98,D = 102;");
@@ -405,10 +469,10 @@ public class O_cavaleiro_de_java {
 		Lista.add("Int A = 88, B = 99, C = 98,D = 90;");
 		Lista.add("Int A = 64, B = 94, C = 102,D = 91;");
 		Lista.add("Int A = 96, B = 95, C = 101,D = 102;");
-		
+
 		do {
 
-			Collections.shuffle(Lista); 
+			Collections.shuffle(Lista);
 			for (int i = 0; i < Lista.size(); i++) {
 				switch (i) {
 
@@ -433,7 +497,7 @@ public class O_cavaleiro_de_java {
 					break;
 				}
 			}
-			String alternativa =ColetarString();
+			String alternativa = ColetarString();
 			int valorDeAlternativa = 0;
 
 			switch (alternativa.toLowerCase()) {
@@ -466,40 +530,43 @@ public class O_cavaleiro_de_java {
 			if (Lista.get(valorDeAlternativa).equals("Int A = 98, B = 99, C = 98,D = 102;")) {
 
 				Delay("Llort: Como você acertou???\nNão quero saber, como prometido, sua recompensa:\n Você Ganhou um colar com gravuras de flores em volta"
-					+ "de um espaço em branco.\n O que eu devo fazer com isso?e onde esta o resto do colar? ", TimeUnit.MILLISECONDS, temp_dialog);
-				
+						+ "de um espaço em branco.\n O que eu devo fazer com isso?e onde esta o resto do colar? ",
+						TimeUnit.MILLISECONDS, temp_dialog);
+
 				sair = false;
 			} else {
-				Delay("Llort: Você errou,Vai me passando os cafeinados", TimeUnit.MILLISECONDS, temp_dialog);
+				Delay("Llort: Você errou,Vai me passando os cafeinados" + "Você só tem " + Cafeh + "cafés contigo",
+						TimeUnit.MILLISECONDS, temp_dialog);
 				if (Cafeh > 1) {
-				perda = Cafeh - 1;
-				Cafeh = Cafeh -perda;
-				Delay("Você perdeu "+perda+"cafés" , TimeUnit.MILLISECONDS, temp_dialog);
-				}else {
-					Delay("\r\nGAME OVER - acabou o café...\n☕" , TimeUnit.MILLISECONDS, temp_dialog);
+					perda = Cafeh - 1;
+					Score = Score - 1;
+					Cafeh = Cafeh - perda;
+					Delay("Você perdeu " + perda + "cafés", TimeUnit.MILLISECONDS, temp_dialog);
+				} else {
+					Delay("\r\nGAME OVER - acabou o café...", TimeUnit.MILLISECONDS, temp_dialog);
 					System.exit(0);
 				}
-				
 				sair = false;
 			}
-
 		} while (sair);
-		DesafioDoTroll01=true;
+		Score = Score + 1;
+		DesafioDoTroll01 = true;
+		return DesafioDoTroll01;
 	}
-	public static void DesafioDoTroll02()throws InterruptedException {
+
+	public static int DesafioDoTroll02() throws InterruptedException {
 		Delay("Llort: Eu amo a magia dos IFs, então vamos com outra dele:", TimeUnit.MILLISECONDS, temp_dialog);
 		boolean sair = true;
-		Delay("\nO código abaixo vai funcionar?"
-				+ "\n  if (N % i == 0) \n"
-				+ "System.out.println(\"Hello Word\");   ", TimeUnit.MILLISECONDS, temp_dialog);
+		Delay("\nO código abaixo vai funcionar?" + "\n  if (10>1) \n" + "System.out.println(\"Hello Word\");   ",
+				TimeUnit.MILLISECONDS, temp_dialog);
 
 		ArrayList<String> Lista = new ArrayList<String>();
 		Lista.add("Sim");
 		Lista.add("Nao");
-		
+
 		do {
 
-			Collections.shuffle(Lista); 
+			Collections.shuffle(Lista);
 			for (int i = 0; i < Lista.size(); i++) {
 				switch (i) {
 
@@ -512,7 +579,7 @@ public class O_cavaleiro_de_java {
 					break;
 				}
 			}
-			String alternativa =ColetarString();
+			String alternativa = ColetarString();
 			int valorDeAlternativa = 0;
 
 			switch (alternativa.toLowerCase()) {
@@ -531,41 +598,419 @@ public class O_cavaleiro_de_java {
 			}
 			if (Lista.get(valorDeAlternativa).equals("Sim")) {
 
-				Delay("\nLlort:parabens... \nLlort:A verdade é que, eu não sou bom com charadas, a primeira, é minha unica, boa e verdadeira charada, tome seu prêmio...", TimeUnit.MILLISECONDS, temp_dialog);
-				
+				Delay("\nLlort:parabens... \nLlort:A verdade é que, eu não sou bom com charadas, a primeira, é minha unica, boa e verdadeira charada, tome seu prêmio...",
+						TimeUnit.MILLISECONDS, temp_dialog);
+
 				sair = false;
 			} else {
-				System.out.println("          Resposta errada, tente novamente");
+				if (Cafeh > 1) {
+				System.out.println("Resposta errada, tente novamente"+"Você tem " + Cafeh + "cafés contigo");
+				Score = Score - 1;
+				Cafeh = Cafeh - 1;
+				} else {
+					Delay("\r\nGAME OVER - acabou o café...", TimeUnit.MILLISECONDS, temp_dialog);
+					System.exit(0);
+				}
 			}
 
 		} while (sair);
-		DesafioDoTroll02=true;
+		Score = Score + 1;
+		DesafioDoTroll02 = true;
+		return Score;
+	}
+
+	public static int DesafioArray() throws InterruptedException {
+		boolean sair = true; // variável para sair do loop
+
+		System.out.println("Qual das características abaixo é padrão de um array? ");
+		ArrayList<String> Lista = new ArrayList<String>(); // criação de um vetor em lista do tipo String
+		Lista.add("O uso de colchetes");
+		Lista.add("O uso de aspas duplas para delimitar o tamanho do vetor");
+		Lista.add("O uso de sublinhado (underline) para separar o tipo de variável do vetor");
+		Lista.add("A aplicação do comandos 'break' para sair do vetor após aramzenar um dado");
+		Lista.add("A adição de varios outros vetores de valor 0 quando não se é delimitado um tamanho");
+		// Lista.add para adicionar String diferentes e, consequentemente posições ao
+		// vetor em lista
+		do {
+			// 'do' para que o laço seja executado ao menos uma vez
+			Collections.shuffle(Lista); // embaralhar as posições do vetor em lista
+			for (int i = 0; i < Lista.size(); i++) { // esse laço 'For' é para atribuir os valores embaralhado em
+														// alternativas fixas, assim as alternativas sempre vão mudar de
+														// lugar
+				switch (i) {
+
+				case 0:
+					System.out.println("\nA) " + Lista.get(i)); // sorteia um valor embaralhado para ser alternativa
+																// 'A)' etc....
+					break;
+
+				case 1:
+					System.out.println("B) " + Lista.get(i));
+					break;
+
+				case 2:
+					System.out.println("C) " + Lista.get(i));
+					break;
+
+				case 3:
+					System.out.println("D) " + Lista.get(i));
+					break;
+
+				case 4:
+					System.out.println("E) " + Lista.get(i));
+					break;
+				}
+			}
+			String alternativa = ColetarString();
+			int valorDeAlternativa = 0;
+
+			switch (alternativa.toLowerCase()) {
+			// transforma qualquer letra em minuscula para padronizar
+			// esse switch é para identificar a opção escolhida por um número, pois esse
+			// será usado para buscar a informação do vetor referente aquele número
+
+			case "a":
+				valorDeAlternativa = 0;
+				break;
+			// letra 'a' vale 0, então ele vai buscar o que tem no vetor em lista na posição
+			// 0
+
+			case "b":
+				valorDeAlternativa = 1;
+				break;
+
+			case "c":
+				valorDeAlternativa = 2;
+				break;
+
+			case "d":
+				valorDeAlternativa = 3;
+				break;
+
+			case "e":
+				valorDeAlternativa = 4;
+				break;
+
+			default:
+				System.out.println("Essa não é uma alternativa válida");
+				break;
+			}
+			if (Lista.get(valorDeAlternativa).equals("O uso de colchetes")) {
+				// Se o que ele pegar no vetor em lista na posição escolhida for igual a
+				// resposta certa, ele muda a variável boolean para sair do laço, caso contrário
+				// ele embaralha novamente as alternativas e recomeça o processo
+				System.out.println("Resposta certa, parabéns!!");
+				sair = false;
+			} else {
+				if (Cafeh > 1) {
+					System.out.println("Resposta errada, tente novamente" + " Você só tem " + Cafeh + " cafés contigo");
+					Cafeh = Cafeh - 1;
+					Score = Score + 1;
+
+				} else {
+					Delay("\r\nGAME OVER - acabou o café...", TimeUnit.MILLISECONDS, temp_dialog);
+					System.exit(0);
+				}
+			}
+		} while (sair);
+		Score = Score + 1;
+		return Score;
+	}
+
+	public static int DesafioFor() throws InterruptedException {
+		boolean sair = true; // variável para sair do loop
+
+		System.out.println("Qual das características abaixo é padrão de um For? ");
+		ArrayList<String> Lista = new ArrayList<String>(); // criação de um vetor em lista do tipo String
+		Lista.add("O uso de variável char como seleção de alternativas");
+		Lista.add("A aplicação de hifens como contador otimizado");
+		Lista.add("não ter variável contador por ser um loop infinito");
+		Lista.add("O uso de uma variavel contador com limite pré definido");
+		Lista.add("Nenhuma das alternativas");
+		// Lista.add para adicionar String diferentes e, consequentemente posições ao
+		// vetor em lista
+		do {
+			// 'do' para que o laço seja executado ao menos uma vez
+			Collections.shuffle(Lista); // embaralhar as posições do vetor em lista
+			for (int i = 0; i < Lista.size(); i++) { // esse laço 'For' é para atribuir os valores embaralhado em
+														// alternativas fixas, assim as alternativas sempre vão mudar de
+														// lugar
+				switch (i) {
+
+				case 0:
+					System.out.println("A) " + Lista.get(i)); // sorteia um valor embaralhado para ser alternativa 'A)'
+																// etc....
+					break;
+
+				case 1:
+					System.out.println("B) " + Lista.get(i));
+					break;
+
+				case 2:
+					System.out.println("C) " + Lista.get(i));
+					break;
+
+				case 3:
+					System.out.println("D) " + Lista.get(i));
+					break;
+
+				case 4:
+					System.out.println("E) " + Lista.get(i));
+					break;
+				}
+			}
+			String alternativa = ColetarString();
+			int valorDeAlternativa = 0;
+
+			switch (alternativa.toLowerCase()) {
+			// transforma qualquer letra em minuscula para padronizar
+			// esse switch é para identificar a opção escolhida por um número, pois esse
+			// será usado para buscar a informação do vetor referente aquele número
+
+			case "a":
+				valorDeAlternativa = 0;
+				break;
+			// letra 'a' vale 0, então ele vai buscar o que tem no vetor em lista na posição
+			// 0
+
+			case "b":
+				valorDeAlternativa = 1;
+				break;
+
+			case "c":
+				valorDeAlternativa = 2;
+				break;
+
+			case "d":
+				valorDeAlternativa = 3;
+				break;
+
+			case "e":
+				valorDeAlternativa = 4;
+				break;
+
+			default:
+				System.out.println("Éssa não é uma alternativa válida");
+				break;
+			}
+			if (Lista.get(valorDeAlternativa).equals("O uso de uma variavel contador com limite pré definido")) {
+				// Se o que ele pegar no vetor em lista na posição escolhida for igual a
+				// resposta certa, ele muda a variável boolean para sair do laço, caso contrário
+				// ele embaralha novamente as alternativas e recomeça o processo
+				System.out.println("Resposta certa, parabéns!!");
+				sair = false;
+			} else {
+				if (Cafeh > 1) {
+					System.out.println("Resposta errada, tente novamente" + " Você só tem " + Cafeh + " cafés contigo");
+					Cafeh = Cafeh - 1;
+					Score = Score + 1;
+				} else {
+					Delay("\r\nGAME OVER - acabou o café...", TimeUnit.MILLISECONDS, temp_dialog);
+					System.exit(0);
+				}
+			}
+		} while (sair);
+		Score = Score + 1;
+		return Score;
+	}
+	
+	public static int DesafioDoWhile()throws InterruptedException{
+		boolean sair = true;
+
+		System.out.println("Qual a principal diferenca entre os la�os de repeticao WHILE e DO WHILE ?");
 		
+		ArrayList<String> Lista = new ArrayList<String>();
+		Lista.add("Nao ha diferenca entre os laços. ");
+	
+		Lista.add("WHILE primeiro avalia a condicional, se for verdadeiro ele executa o codigo.");
 		
-	}
-	public static void DesafioArray()throws InterruptedException {
+		Lista.add("DO WHILE primeiro avalia a condicional, se for verdadeiro ele executa o codigo.");
+		
+		Lista.add("WHILE primeiro executa a condicional, e depois avalia se a condicional e verdadeira ou nao.");
+		
+		Lista.add("WHILE e uma Laço de repeticao e DO WHILE e uma classe.");
+		
+		do {
+			
 
-	}
+			Collections.shuffle(Lista); 
+			for (int i = 0; i < Lista.size(); i++) {
+				switch (i) {
 
-	public static void DesafioFor() throws InterruptedException{
+				case 0:
+					System.out.println("\nA) " + Lista.get(i));
+					break;
 
+				case 1:
+					System.out.println("B) " + Lista.get(i));
+					break;
+
+				case 2:
+					System.out.println("C) " + Lista.get(i));
+					break;
+
+				case 3:
+					System.out.println("D) " + Lista.get(i));
+					break;
+
+				case 4:
+					System.out.println("E) " + Lista.get(i));
+					break;
+				}
+			}
+			String alternativa = ColetarString();
+			int valorDeAlternativa = 0;
+
+			switch (alternativa.toLowerCase()) {
+
+			case "a":
+				valorDeAlternativa = 0;
+				break;
+
+			case "b":
+				valorDeAlternativa = 1;
+				break;
+
+			case "c":
+				valorDeAlternativa = 2;
+				break;
+
+			case "d":
+				valorDeAlternativa = 3;
+				break;
+
+			case "e":
+				valorDeAlternativa = 4;
+				break;
+
+			default:
+				System.out.println("�ssa n�o � uma alternativa v�lida");
+				break;
+			}
+			if (Lista.get(valorDeAlternativa).equals("WHILE primeiro avalia a condicional, se for verdadeiro ele executa o c�digo.")) {
+
+				System.out.println("Resposta certa, parab�ns!!");
+				sair = false;
+			} else {
+				System.out.println("Resposta errada, tente novamente"+ "Você só tem " + Cafeh + "cafés contigo");
+				if (Cafeh > 1) {
+				
+					Score = Score - 1;
+				
+				} else {
+					if (Cafeh > 1) {
+						System.out.println("Resposta errada, tente novamente" + " Você tem " + Cafeh + " cafés contigo");
+						Cafeh = Cafeh - 1;
+						Score = Score - 1;
+					} else {
+						Delay("\r\nGAME OVER - acabou o café...", TimeUnit.MILLISECONDS, temp_dialog);
+						System.exit(0);
+					}
+				}
+			}
+
+		} while (sair);
+		
+		Score = Score + 1;
+		return Score;
+	}	
+	static int DesafioIf()throws InterruptedException{
+		 boolean sair = true;
+
+	        System.out.println("Na estrutura de decisão IF e ELSE, a expressão condicional deve estar dentro de:  ");
+	    
+	        
+	        ArrayList<String> Lista = new ArrayList<String>();
+	        Lista.add(" ( ) parenteses ");
+	        Lista.add(" { } chaves ");
+	        Lista.add(" [ ] colchetes ");
+	        Lista.add(" ' ' aspas simples ");
+	        Lista.add("(()) parenteses duplo ");
+	        
+	        do {
+
+	            Collections.shuffle(Lista); 
+	            for (int i = 0; i < Lista.size(); i++) {
+	                switch (i) {
+
+	                case 0:
+	                    System.out.println("\nA) " + Lista.get(i));
+	                    break;
+
+	                case 1:
+	                    System.out.println("B) " + Lista.get(i));
+	                    break;
+
+	                case 2:
+	                    System.out.println("C) " + Lista.get(i));
+	                    break;
+
+	                case 3:
+	                    System.out.println("D) " + Lista.get(i));
+	                    break;
+
+	                case 4:
+	                    System.out.println("E) " + Lista.get(i));
+	                    break;
+	                }
+	            }
+	            String alternativa = ColetarString();
+	            int valorDeAlternativa = 0;
+
+	            switch (alternativa.toLowerCase()) {
+
+	            case "a":
+	                valorDeAlternativa = 0;
+	                break;
+
+	            case "b":
+	                valorDeAlternativa = 1;
+	                break;
+
+	            case "c":
+	                valorDeAlternativa = 2;
+	                break;
+
+	            case "d":
+	                valorDeAlternativa = 3;
+	                break;
+
+	            case "e":
+	                valorDeAlternativa = 4;
+	                break;
+
+	            default:
+	                System.out.println("Éssa não é uma alternativa válida");
+	                break;
+	            }
+	            if (Lista.get(valorDeAlternativa).equals(" ( ) parenteses ")) {
+
+	                System.out.println("Resposta certa, parabéns!!");
+	                sair = false;
+	            } else {
+					if (Cafeh > 1) {
+						System.out.println("Resposta errada, tente novamente" + " Você tem " + Cafeh + " cafés contigo");
+						Cafeh = Cafeh - 1;
+						Score = Score - 1;
+					} else {
+						Delay("\r\nGAME OVER - acabou o café...", TimeUnit.MILLISECONDS, temp_dialog);
+						System.exit(0);
+					}
+				}
+		} while (sair);
+		Score = Score + 1;
+		return Score;
 	}
-	//Metódo criado para coleta de Strings
-	static String ColetarString() throws InterruptedException{
+	// Metódo criado para coleta de Strings
+	public static String ColetarString() throws InterruptedException {
 		Scanner entrada = new Scanner(System.in);
 		String word;
 		word = entrada.next();
 		return word;
 	}
 
-	static double ColetarDouble()throws InterruptedException{
-		Scanner entrada = new Scanner(System.in);
-		double num;
-		num = entrada.nextDouble();
-		return num;
-	}
-	//Metódo criado para coleta de Int
-	static int ColetarInt()throws InterruptedException {
+	// Metódo criado para coleta de Int
+	public static int ColetarInt() throws InterruptedException {
 		Scanner entrada = new Scanner(System.in);
 		int num;
 		num = entrada.nextInt();
