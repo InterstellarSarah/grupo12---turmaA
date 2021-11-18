@@ -348,8 +348,8 @@ public class O_cavaleiro_de_java {
 				"	Existe no java uma função para embaralhar conteúdos e coleções. Qual o nome da expressão?\n ");
 
 		ArrayList<String> lista = new ArrayList<String>();
-		lista.add("Math.Random;"); // resposta correta
-		lista.add("Shuffle;");
+		lista.add("Math.Random;"); 
+		lista.add("Shuffle;");//Resposta certa
 		lista.add("Sort;");
 		lista.add("Reverse;");
 		lista.add("Array;");
@@ -516,7 +516,7 @@ public class O_cavaleiro_de_java {
 				TimeUnit.MILLISECONDS, temp_dialog);
 
 		ArrayList<String> Lista = new ArrayList<String>();
-		Lista.add("Int A = 98, B = 99, C = 98,D = 102;");
+		Lista.add("Int A = 98, B = 99, C = 98,D = 102;"); //alternativa correta
 		Lista.add("Int A = 88, B = 100, C = 99,D = 78;");
 		Lista.add("Int A = 88, B = 99, C = 98,D = 90;");
 		Lista.add("Int A = 64, B = 94, C = 102,D = 91;");
@@ -678,7 +678,7 @@ public class O_cavaleiro_de_java {
 
 		System.out.println("Qual das características abaixo é padrão de um array? ");
 		ArrayList<String> Lista = new ArrayList<String>(); // criação de um vetor em lista do tipo String
-		Lista.add("O uso de colchetes");
+		Lista.add("O uso de colchetes"); //alternativa correta 
 		Lista.add("O uso de aspas duplas para delimitar o tamanho do vetor");
 		Lista.add("O uso de sublinhado (underline) para separar o tipo de variável do vetor");
 		Lista.add("A aplicação do comandos 'break' para sair do vetor após aramzenar um dado");
@@ -794,7 +794,7 @@ public class O_cavaleiro_de_java {
 		Lista.add("O uso de variável char como seleção de alternativas");
 		Lista.add("A aplicação de hifens como contador otimizado");
 		Lista.add("não ter variável contador por ser um loop infinito");
-		Lista.add("O uso de uma variavel contador com limite pré definido");
+		Lista.add("O uso de uma variavel contador com limite pré definido");//alternativa correta
 		Lista.add("Nenhuma das alternativas");
 		// Lista.add para adicionar String diferentes e, consequentemente posições ao
 		// vetor em lista
