@@ -16,7 +16,7 @@ public class O_cavaleiro_de_java {
 
 	// O menu do jogo
 	public static void main(String[] args) throws Exception {
-		Parte_Leste();
+		
 		Scanner entrada = new Scanner(System.in);
 
 		String seleciona;
@@ -72,11 +72,11 @@ public class O_cavaleiro_de_java {
 		// esse trecho a seguir é apenas um protótipo de como vai funcionar o jogo,
 		// ainda não foi adicionado nenhum desafio nele
 		Delay("Você acorda com um homem muito velho e barbudo te levantando e gritando\n"
-				+ "Velho Barbudo: Não há tempo para explicar, você precisa fechar essa fissura", TimeUnit.MILLISECONDS,
+				+ "Velho Barbudo: Nao ha tempo para explicar, você precisa fechar essa fissura", TimeUnit.MILLISECONDS,
 				temp_dialog);
 		do {
 			System.out.print(
-					"\n 1- Quem é você? \n 2- Oque esta acontecendo?! \n 3- Eu não sei como fechala \n 4- Irei fecha-la");
+					"\n 1- Quem é você? \n 2- Oque esta acontecendo?! \n 3- Eu nao sei como fechala \n 4- Irei fecha-la");
 			seleciona = entrada.nextInt();
 			if (seleciona == 1) {
 				Delay("Velho barbudo: Como eu disse, não a tempo para explicar!, feche essa fissura",
@@ -84,12 +84,14 @@ public class O_cavaleiro_de_java {
 			}
 
 			if (seleciona == 2) {
-				Delay("Velho barbudo: Se esta fissura não for fechada, nós iremos morrer aqui, e só você pode fechala\n então se apresse",
+				Delay("Velho barbudo: Se esta fissura não for fechada, nos iremos morrer aqui, e so você pode fechala\n então se apresse",
 						TimeUnit.MILLISECONDS, temp_dialog);
 			}
 
+				
+			
 			if (seleciona == 3) {
-				Delay("Velho barbudo: Concentre-se apenas na lógica, pois você já possui a força",
+				Delay("Velho barbudo: Concentre-se apenas na logica, pois você já possui a forca",
 						TimeUnit.MILLISECONDS, temp_dialog);
 			}
 
@@ -101,9 +103,9 @@ public class O_cavaleiro_de_java {
 				TimeUnit.MILLISECONDS, temp_dialog);
 		Delay("\nVelho Barbudo: Seja quem for devemos impedir que venha para nosso mundo, enfim, venha comigo, irei leva-lo para o seu proximo destino",
 				TimeUnit.MILLISECONDS, temp_dialog);
-		Delay("\nVelho Barbudo: Bem-Vindo a cidade do pico da montanha, aqui antes era apenas uma parada, mas varias pessoas começaram\n  "
-				+ " aparecer neste lugal para resolver a crise com os dragões, enfim, há muito oque fazer para impedir os dragões\n "
-				+ " boa sorte \n ... \n a próposito, meu nome é Baal ", TimeUnit.MILLISECONDS, temp_dialog);
+		Delay("\nVelho Barbudo: Bem-Vindo a cidade do pico da montanha, aqui antes era apenas uma parada, mas varias pessoas comecaram\n  "
+				+ " aparecer neste lugar para resolver a crise com os dragoes, enfim, há muito oque fazer para impedir os dragoes\n "
+				+ " boa sorte \n ... \n a próposito, meu nome e Baal ", TimeUnit.MILLISECONDS, temp_dialog);
 		Parte_central();
 
 	}
@@ -122,7 +124,7 @@ public class O_cavaleiro_de_java {
 		case 2:
 			Parte_Leste();
 			break;
-		default:System.out.println("\n acho que não é por aqui");
+		default:System.out.println("\n acho que não e por aqui");
 			Parte_central();
 		}
 	}
@@ -178,7 +180,7 @@ public class O_cavaleiro_de_java {
 	public static void Parte_Leste() throws InterruptedException {
 		Scanner entrada = new Scanner(System.in);
 		int decicao;
-		Delay("\nVocê vê algumas casas e comercios, há uma Taverna e em meio as casas você vê um silhueta de um homem/n"
+		Delay("\nVocê vê algumas casas e comercios, há uma Taverna e em meio as casas você vê um silhueta de um homem\n"
 				+ " \n1-ir para o beco \n2-ir na taverna \n3- Voltar para parte central", TimeUnit.MILLISECONDS,
 				temp_dialog);
 		decicao = ColetarInt();
@@ -202,8 +204,8 @@ public class O_cavaleiro_de_java {
 	public static void TavernaDaUcraniana() throws InterruptedException {
 		int decicao;
 		if (TavernaDaUcraniana == 0) {
-			Delay("\nAo entrar logo se é possivel ver uma sala repleta de móveis rústicos, chifres nas paredes, e castiçais de metal descendo/n do teto, a"
-					+ " iluminição das tochas e velas chama sua atenção,há muitos estandartes Azul e amarelo, além do cheiro da ceia que foi preparada, há uma moça no bar.",
+			Delay("\nAo entrar logo se é possivel ver uma sala repleta de móveis rústicos, chifres nas paredes, e castiçais de metal descendo\n do teto, a"
+					+ " iluminição das tochas e velas chama sua atenção,há muitos estandartes Azul e amarelo,\n além do cheiro da ceia que foi preparada, há uma moça no bar.",
 					TimeUnit.MILLISECONDS, temp_dialog);
 
 			Delay("\nNastya: Bem-vindo aventureiro, o que na minha taverna seria de seu agrado?\n1- Não tenho como pagar por nada \n2- sua companhia já me é bem agradável",
@@ -255,7 +257,7 @@ public class O_cavaleiro_de_java {
 				switch (decicao) {
 				case 1:
 					Delay("\nNastya: E-Este colar...onde você o conseguiu?...\nEle é uma herança que foi roubada há muitos anos."
-						+ "\nObrigado, não tenho como agradecer, mas venha aqui atrás para um tratamento VIP"
+						+ "\nObrigado, não tenho como agradecer, mas venha aqui atrás para um tratamento especial"
 						+ "\nE assim nosso bravo aventureiro esqueceu de sua missão."
 						+ "\nAfinal para ele era mais importante uma mulher, que sua jornada"
 						+ "\nFIM\n\nParabens você concluiu o Final Da Ucraniana",
@@ -420,7 +422,7 @@ public class O_cavaleiro_de_java {
 		return Score;
 	}
 
-	public static int df_SCrpg() throws InterruptedException {
+	public static int df_SCrpg() 	throws InterruptedException {
 		Scanner entrada = new Scanner(System.in);
 		String alt;
 		boolean sair = true;
@@ -485,7 +487,7 @@ public class O_cavaleiro_de_java {
 				System.out.println("Escolha inválida!");
 			}
 			if (lista.get(n).equals("Break e Default;")) { // compara a resposta com a alternativa
-				System.out.println("Resposta correta! :D");
+				System.out.println("Você conseguiu.");
 				sair = false;
 			} else {
 				if (Cafeh > 1) {
@@ -579,13 +581,13 @@ public class O_cavaleiro_de_java {
 			}
 			if (Lista.get(valorDeAlternativa).equals("Int A = 98, B = 99, C = 98,D = 102;")) {
 
-				Delay("Llort: Como você acertou???\nNão quero saber, como prometido, sua recompensa:\n Você Ganhou um colar com gravuras de flores em volta"
-						+ "de um espaço em branco.\n O que eu devo fazer com isso?e onde esta o resto do colar? ",
+				Delay("Llort: Como você acertou???\nNão quero saber, como prometido, sua recompensa:\nVocê Ganhou um colar com gravuras de flores em volta"
+						+ "de um espaço em branco.\nO que eu devo fazer com isso?e onde esta o resto do colar? ",
 						TimeUnit.MILLISECONDS, temp_dialog);
 
 				sair = false;
 			} else {
-				Delay("Llort: Você errou,Vai me passando os cafeinados" + "Você tem " + Cafeh + "cafés contigo",
+				Delay("Llort:Você errou,Vai me passando os cafeinados" + "Você tem " + Cafeh + "cafés contigo",
 						TimeUnit.MILLISECONDS, temp_dialog);
 				if (Cafeh > 1) {
 					perda = Cafeh - 1;
@@ -650,7 +652,8 @@ public class O_cavaleiro_de_java {
 
 				Delay("\nLlort:parabens... \nLlort:A verdade é que, eu não sou bom com charadas, a primeira, é minha unica, "
 						+ "boa e verdadeira charada, tome seu prêmio...\nVocê ganha a parte que faltava do colar, ele não mágico, porem elegante"
-						+ "Você o usa no pescoço.", TimeUnit.MILLISECONDS, temp_dialog);
+						+ "\nVocê o usa no pescoço."
+						+ "\nVocê sai do beco.", TimeUnit.MILLISECONDS, temp_dialog);
 				DesafioDoTroll01 = 2;	
 				ColarCompleto = 1;
 				sair = false;
@@ -780,7 +783,7 @@ public class O_cavaleiro_de_java {
 
 		decicao = ColetarInt();
 		
-		Delay("\nNastya:haha você é mais um daqueles que se confundem com minha simpatia.\nVolte quando tiver algo interessante.",TimeUnit.MILLISECONDS, temp_dialog);
+		
 	}
 
 	public static int DesafioFor() throws InterruptedException {
