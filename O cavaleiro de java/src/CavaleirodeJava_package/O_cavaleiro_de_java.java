@@ -10,15 +10,12 @@ public class O_cavaleiro_de_java {
 	// variáveis para 0;
 
 	static int Cafeh = 3, TavernaDaUcraniana = 0, Score = 0;
-	static int temp_dialog = Cafeh * 1, temp_narrativa = 150, temp_transicao = 25;
+	static int temp_dialog = Cafeh * 1, temp_narrativa = 20, temp_transicao = 25, temp_creditos = 150;
 	static int ColarCompleto = 0,DesafioDoTroll01 = 0;
 	static boolean  DesafioDoTroll011 = false, DesafioDoTroll02 = false;
 
 	// O menu do jogo
 	public static void main(String[] args) throws Exception {
-		
-		Scanner entrada = new Scanner(System.in);
-
 		String seleciona;
 		int sair = 0;
 		do {
@@ -50,7 +47,7 @@ public class O_cavaleiro_de_java {
 			case "D":
 				Delay("Você deseja mesmo sair?", TimeUnit.MILLISECONDS, temp_transicao);
 				System.out.println("\nS / N");
-				seleciona = entrada.next();
+				seleciona = ColetarString();
 
 				if (seleciona.equals("S") || seleciona.equals("s")) {
 					Delay("Até um outro dia", TimeUnit.MILLISECONDS, temp_dialog);
@@ -66,7 +63,7 @@ public class O_cavaleiro_de_java {
 
 	// Aqui é aonde o jogo todo se passa
 	public static void jogo() throws Exception {
-		Scanner entrada = new Scanner(System.in);
+		
 		int seleciona;
 
 		// esse trecho a seguir é apenas um protótipo de como vai funcionar o jogo,
@@ -77,7 +74,7 @@ public class O_cavaleiro_de_java {
 		do {
 			System.out.print(
 					"\n 1- Quem é você? \n 2- Oque esta acontecendo?! \n 3- Eu nao sei como fechala \n 4- Irei fecha-la");
-			seleciona = entrada.nextInt();
+			seleciona = ColetarInt();
 			if (seleciona == 1) {
 				Delay("Velho barbudo: Como eu disse, não a tempo para explicar!, feche essa fissura",
 						TimeUnit.MILLISECONDS, temp_dialog);
@@ -114,7 +111,7 @@ public class O_cavaleiro_de_java {
 		Scanner entrada = new Scanner(System.in);
 		int decicao;
 
-		System.out.println("\n Para onde ir agora?\n  \n 1- Oeste \n 2- Leste");
+		System.out.println("\nHá apenas um grande e velhor pilar aqui\n Para onde ir agora?\n  \n 1- Oeste \n 2- Leste");
 		decicao = entrada.nextInt();
 
 		switch (decicao) {
@@ -130,50 +127,61 @@ public class O_cavaleiro_de_java {
 	}
 
 	public static void Parte_Oeste() throws InterruptedException {
-		Scanner entrada = new Scanner(System.in);
 		int decicao;
-		String decicao_definitivo;
 		System.out.println(
-				"\nParte Oeste da cidade: Esta parte esta em pedaços, mas há um grupo de pessoas reunida discutindo algo aparentemente sério\n"
-						+ " 1- Ir para o centro da cidade \n 2- Perguntar as pessoas o que esta acontecendo ");
-		decicao = entrada.nextInt();
+				"\nParte Oeste da cidade: Esta parte esta em pedacos, mas ha um grupo de pessoas reunida discutindo algo aparentemente serio\n"
+						+ "1- Voltar para o centro da cidade \n2- Perguntar as pessoas o que esta acontecendo ");
+		decicao = ColetarInt();
+		
 		switch (decicao) {
 		case 1:
 			Parte_central();
 			break;
 		case 2:
-			Delay("Campones: Existe um dragão que traiu sua raça, seu nome é seath e ele vive isolado dentro de uma caverna\n"
-					+ " ao noroeste daqui, estamos decidindo quem ira confronta-lo", TimeUnit.MILLISECONDS, temp_dialog);
-			System.out
-					.println("\n1- Por que um dragão trairia sua própria raça? \n2- por que não vamos todos juntos? \n"
-							+ "3- Eu irei visita-lo");
+			// ele repete o dialogo do pessoal da parte oeste
+			do {
+			Delay("Campones: Existe um dragão que traiu sua raca, seu nome e Seath e ele vive isolado dentro de uma caverna\n"
+					+ "ao noroeste daqui, estamos decidindo quem ira confronta-lo", TimeUnit.MILLISECONDS, temp_dialog);
+			System.out.println("\n1- Por que um dragao trairia sua propria raca? \n2- por que nao vamos todos juntos? \n"
+							+ "3- Eu irei visita-lo\n4- Eu tenho que ir");
 			decicao = ColetarInt();
+			
 			switch (decicao) {
 			case 1:
 				Delay("\nCampones: Humanos matam humanos, talvez so estejam apredendo conosco", TimeUnit.MILLISECONDS,temp_dialog);
 				break;
 			case 2:
-				Delay("\nCampones: Temos que estar aqui para contra-atacar caso os dragões nos ataquem, não podemos ir todos juntos",
+				Delay("\nCampones: Temos que estar aqui para contra-atacar caso os dragoes nos ataquem, nao podemos ir todos juntos",
 						TimeUnit.MILLISECONDS, temp_dialog);
 				break;
 			case 3:
 				Delay("\nCampones: Tome cuidado, talvez devesse passar na parte leste do condado, veja se encontra algo de útil.", TimeUnit.MILLISECONDS,temp_dialog);
 				
-				Delay("\nSe for agora para o dragão, esta provavelmente é uma jornada sem volta, esta certo disso?", TimeUnit.MILLISECONDS,
+				Delay("\nSe for agora para o dragao, esta provavelmente e uma jornada sem volta, esta certo disso?", TimeUnit.MILLISECONDS,
 						temp_dialog);
-				System.out.print("\n1- Sim \n2- Não ");
-				decicao = entrada.nextInt();
+				System.out.print("\n1- Sim \n2- Nao ");
+				decicao = ColetarInt();
 
 				if (decicao == 1) {
 					Reta_final();
 				} else {
-					Delay("Ainda não estou pronto", TimeUnit.MILLISECONDS, temp_dialog);
+					Delay("Ainda nao estou pronto", TimeUnit.MILLISECONDS, temp_dialog);
 					Parte_Oeste();
 				}
 				break;
+				default:
+					Delay("Voce quer agua?, nao consigo te entender", TimeUnit.MILLISECONDS, temp_dialog);
+					break;
+			case 4:
+				Parte_Oeste();
+				break;
 			}
-
+			}while(decicao != 4);
 			break;
+			default:
+				Delay("Não sei para ir, entao vou ficar aqui", TimeUnit.MILLISECONDS, temp_dialog);
+				Parte_Oeste();
+				break;
 		}
 	}
 
@@ -273,7 +281,113 @@ public class O_cavaleiro_de_java {
 	}
 
 	public static void Reta_final() throws InterruptedException {
-		System.out.println("RETA FINAL");
+		int decisao;
+		
+		do {
+			Delay("\nVoce chega ate a caverna e encontra o dragao olhando fixamente para voce\n"
+					+ "???: Meu nome e Seath e eu estava a sua espera...\n1- O que voce veio fazer aqui"
+					+ "\n2- O que voce sabe sobre a volta dos dragoes \n3- Por que te chamam de o 'dragao traidor'? ",  TimeUnit.MILLISECONDS, temp_dialog);
+			decisao = ColetarInt();
+		switch(decisao) {
+		case 1:
+			Delay("\nSeath: Eu fui o primeiro dos dragoes a despertar e eu sabia que o escolhido viria para ca", TimeUnit.MILLISECONDS, temp_dialog);
+			break;
+		case 2:
+			Delay("\nSeath: Os dragoes estao lentamente acordando de seu profundo sono, isso se deve por causa da magia dos magos de java estar enfraquendo\n"
+					+ "Assim que estiverem totalmente acordados, eles iram se vingar da humanidade",  TimeUnit.MILLISECONDS, temp_dialog);
+			break;
+		case 3:
+			Delay("\nSeath: No passado, eu ajudei os magos de java com uma poderosa magia capaz de colocar qualquer ra�a desta terra para dormir\n"
+					+ "eu fiz isso na esperanca de que no futuro a sede de sangue da minha especie diminui-se, mas aparentemente nao funcionou...\n"
+					+ "\n1- O que podemos fazer para impedi-los? \n2- Nao podemos formar um acordo de paz com eles? \n3- Deixe-me perguntar outra coisa", TimeUnit.MILLISECONDS, temp_dialog);
+			decisao = ColetarInt();
+			switch(decisao) {
+			case 1:
+				Delay("\nSeath: Ha 4 pilares espalhados por essa terra, cada um deles tem um enigma, eu nao consigo descifrala...\n mas voce consegue."
+						+ " venha, irei leva-lo em minhas costas para resolver esses enigmas",TimeUnit.MILLISECONDS, temp_dialog);
+				decisao = 4 ;
+			    break;
+			
+			case 2:
+				Delay("\nSeath: Eles estao muito furiosos, mesmo sonhando eles demonstram um grande odio pela humanidade",  TimeUnit.MILLISECONDS, temp_dialog);
+				break;
+			case 3:
+				Reta_final();
+				break;
+			default:
+				Delay("\nSeath: Voce esta se engasgando, quer um copo d'agua?", TimeUnit.MILLISECONDS , temp_dialog);
+				break;
+			
+			}
+			break;
+		default:
+			Delay("\nSeath: Voce esta se engasgando, quer um copo d'agua?", TimeUnit.MILLISECONDS , temp_dialog);
+			break;
+		}
+		
+		}while(decisao != 4);
+		
+		Delay("\nEntão por 9 horas, Seath e o cavaleiro de java percorreram as terras de java, resolvendo enigma por enigma.", TimeUnit.MILLISECONDS, temp_narrativa);
+		
+		Delay("\nPilar 1: ", TimeUnit.MILLISECONDS, temp_narrativa);
+		DesafioArray();
+		
+		Delay("\nPilar 2: ", TimeUnit.MILLISECONDS, temp_narrativa);
+		DesafioDoWhile();
+		
+		Delay("\nPilar 3: ", TimeUnit.MILLISECONDS, temp_narrativa);
+		DesafioFor();
+		
+		Delay("\nPilar 4: ", TimeUnit.MILLISECONDS, temp_narrativa);
+		DesafioIf();
+		
+		Delay("\nEnquanto Seath te carrega de volta para montanha ele sorri e lhe diz...\nSeath: Esta feito, agora depois de muitos anos"
+				+ " os dragoes nao apenas voltaram, mas voltaram com todas as forca para destruir esse mundo hahahahaha, eu disse faria voce sentir toda a agonia deste mundo\nSeath: obrigado humano,"
+				+ " eu nao teria conseguido sem voce\nSeath entao derruba o cavaleiro de suas costas e vai em direcao com ao pico da montanha", TimeUnit.MILLISECONDS, temp_narrativa);
+		
+		Delay("\nO cavaleiro acorda em uma ravina com uma luz branca muito forte cobrindo seu corpo", TimeUnit.MILLISECONDS ,temp_narrativa);
+		
+		decisao = 0;
+		do {
+			Delay("\nBaal: Acorde, voce nao pode morrer aqui, voce ainda pode impedir os dragoes\n1- O que voce fez comigo\n2- O que e voce?\n3- por que so eu posso impedir os dragoes? \n4- Como eu detenho os dragoes?\n"
+					+ "5- Por Seath nos traiu?", TimeUnit.MILLISECONDS, temp_dialog);
+			decisao = ColetarInt();
+			switch(decisao) {
+			case 1:
+				Delay("\nBaal: Eu usei o resto de minha magica para te curar", TimeUnit.MILLISECONDS, temp_dialog);
+				break;
+			case 2:
+				Delay("\nBaal: Eu ja estou morto a muito tempo, eu assumi esta forma apenas para encontrar o escolhido", TimeUnit.MILLISECONDS, temp_dialog);
+				break;
+				
+			case 3:
+				Delay("\nBaal: Voce � o unico que esta com forca total, digamos que voce esta no auge de sua forca, o restante dos magos ja estao enfraquecidos", TimeUnit.MILLISECONDS, temp_dialog);
+				break;
+				
+			case 4:
+				Delay("\nBaal: Seath lhe fez ativar 4 pilares, mas ha um quinto, o pilar dos desejos, com ele e possivel pedir qualquer desejo\n"
+						+ "mas e claro que para usa-lo e necessario resolver um enigma. Esse pilar se encontra no centra da cidade do pico da montanha", TimeUnit.MILLISECONDS, temp_dialog);
+						
+				decisao = 4;
+				break;
+			case 5:
+				Delay("\nBaal: Talvez ele nunca tivesse sido um traidor de sua raca, talvez todo esse tempo isso apenas fazia parte de seu plano", TimeUnit.MILLISECONDS, temp_dialog);
+				break;
+			default:
+				Delay("\nNao entendo do que voce esta falando", TimeUnit.MILLISECONDS , temp_dialog);
+				break;
+			}
+			
+		}while(decisao != 4);
+		
+		Delay("\nBaal acompanha o cavaleiro ate o pilar da cidade e pode-se observar que a cidade esta um caos", TimeUnit.MILLISECONDS, temp_narrativa);
+		Delay("\nBaal: rapido use sua magia no pilar para salvar-nos a todos", TimeUnit.MILLISECONDS, temp_dialog);
+		df_ShuffleRpg();
+		//fim de jogo 
+		Delay("\nBaal: Finalmente paz. Baal comeca a desaparecer, e a paz e novamente restaurada na terra de Java...\nFIM \nPARABENS VOCE CONCLUIO O FINAL PRINCIPAL DO CAVALEIRO DE JAVA", TimeUnit.MILLISECONDS, temp_narrativa);
+		Delay("\nO Cavaleiro de java\nGrupo 12\nIntegrantes: \nEduardo Ramos \nJose Guerra \nRafael Duarte \nSarah Rodrigues \nSamuel Colina \nObrigado por jogar S2", TimeUnit.MILLISECONDS, temp_creditos);
+		System.exit(0);
+			
 	}
 
 	public static void BecoDoTroll() throws InterruptedException {
@@ -345,7 +459,7 @@ public class O_cavaleiro_de_java {
 		boolean sair = true;
 
 		System.out.printf(
-				"	Existe no java uma função para embaralhar conteúdos e coleções. Qual o nome da expressão?\n ");
+				"	\nExiste no java uma função para embaralhar conteúdos e coleções. Qual o nome da expressão?\n ");
 
 		ArrayList<String> lista = new ArrayList<String>();
 		lista.add("Math.Random;"); 
@@ -427,7 +541,7 @@ public class O_cavaleiro_de_java {
 		String alt;
 		boolean sair = true;
 
-		System.out.printf("Quais expressões no switch são opcionais? \n ");
+		System.out.printf("\nQuais expressões no switch são opcionais? \n ");
 
 		ArrayList<String> lista = new ArrayList<String>();
 		lista.add("Break e Default;"); // resposta correta
@@ -676,7 +790,7 @@ public class O_cavaleiro_de_java {
 	public static int DesafioArray() throws InterruptedException {
 		boolean sair = true; // variável para sair do loop
 
-		System.out.println("Qual das características abaixo é padrão de um array? ");
+		System.out.println("\nQual das características abaixo é padrão de um array? ");
 		ArrayList<String> Lista = new ArrayList<String>(); // criação de um vetor em lista do tipo String
 		Lista.add("O uso de colchetes"); //alternativa correta 
 		Lista.add("O uso de aspas duplas para delimitar o tamanho do vetor");
@@ -789,7 +903,7 @@ public class O_cavaleiro_de_java {
 	public static int DesafioFor() throws InterruptedException {
 		boolean sair = true; // variável para sair do loop
 
-		System.out.println("Qual das características abaixo é padrão de um For? ");
+		System.out.println("\nQual das características abaixo é padrão de um For? ");
 		ArrayList<String> Lista = new ArrayList<String>(); // criação de um vetor em lista do tipo String
 		Lista.add("O uso de variável char como seleção de alternativas");
 		Lista.add("A aplicação de hifens como contador otimizado");
@@ -872,7 +986,7 @@ public class O_cavaleiro_de_java {
 				if (Cafeh > 1) {
 					System.out.println("Resposta errada, tente novamente" + " Você só tem " + Cafeh + " cafés contigo");
 					Cafeh = Cafeh - 1;
-					Score = Score + 1;
+					Score = Score - 1;
 				} else {
 					Delay("\r\nGAME OVER - acabou o café...", TimeUnit.MILLISECONDS, temp_dialog);
 					System.exit(0);
@@ -884,9 +998,12 @@ public class O_cavaleiro_de_java {
 	}
 
 	public static int DesafioDoWhile() throws InterruptedException {
+		Scanner entrada = new Scanner(System.in);
 		boolean sair = true;
+		String alternativa;
 
-		System.out.println("Qual a principal diferenca entre os la�os de repeticao WHILE e DO WHILE ?");
+		
+		System.out.println("\nQual a principal diferenca entre os laços de repeticao WHILE e DO WHILE ?");
 
 		ArrayList<String> Lista = new ArrayList<String>();
 		Lista.add("Nao ha diferenca entre os laços. ");
@@ -906,7 +1023,7 @@ public class O_cavaleiro_de_java {
 				switch (i) {
 
 				case 0:
-					System.out.println("\nA) " + Lista.get(i));
+					System.out.println("A) " + Lista.get(i));
 					break;
 
 				case 1:
@@ -926,59 +1043,58 @@ public class O_cavaleiro_de_java {
 					break;
 				}
 			}
-			String alternativa = ColetarString();
-			int valorDeAlternativa = 0;
+			alternativa = entrada.next();
+			int n = 0;
 
-			switch (alternativa.toLowerCase()) {
+			switch (alternativa) {
 
 			case "a":
-				valorDeAlternativa = 0;
+			case "A":	
+				n = 0;
 				break;
 
 			case "b":
-				valorDeAlternativa = 1;
+			case "B":	
+				n = 1;
 				break;
 
 			case "c":
-				valorDeAlternativa = 2;
+			case "C":	
+				n = 2;
 				break;
 
 			case "d":
-				valorDeAlternativa = 3;
+			case "D":	
+				n = 3;
 				break;
 
 			case "e":
-				valorDeAlternativa = 4;
+			case "E":
+				n = 4;
 				break;
 
 			default:
 				System.out.println("�ssa n�o � uma alternativa v�lida");
 				break;
 			}
-			if (Lista.get(valorDeAlternativa)
-					.equals("WHILE primeiro avalia a condicional, se for verdadeiro ele executa o c�digo.")) {
+			if (Lista.get(n).equals("WHILE primeiro avalia a condicional, se for verdadeiro ele executa o codigo.")) {
+					
 
 				System.out.println("Resposta certa, parab�ns!!");
 				sair = false;
 			} else {
-				System.out.println("Resposta errada, tente novamente" + "Você só tem " + Cafeh + "cafés contigo");
+				System.out.println("Resposta errada, tente novamente" + "Você só tem " + Cafeh + " cafés contigo");
 				if (Cafeh > 1) {
-
+					Cafeh = Cafeh - 1;
 					Score = Score - 1;
 
-				} else {
-					if (Cafeh > 1) {
-						System.out
-								.println("Resposta errada, tente novamente" + " Você tem " + Cafeh + " cafés contigo");
-						Cafeh = Cafeh - 1;
-						Score = Score - 1;
+				
 					} else {
 						Delay("\r\nGAME OVER - acabou o café...", TimeUnit.MILLISECONDS, temp_dialog);
 						System.exit(0);
 					}
 				}
-			}
-
+			
 		} while (sair);
 
 		Score = Score + 1;
@@ -988,10 +1104,10 @@ public class O_cavaleiro_de_java {
 	static int DesafioIf() throws InterruptedException {
 		boolean sair = true;
 
-		System.out.println("Na estrutura de decisão IF e ELSE, a expressão condicional deve estar dentro de:  ");
+		System.out.println("\nNa estrutura de decisão IF e ELSE, a expressão condicional deve estar dentro de:  ");
 
 		ArrayList<String> Lista = new ArrayList<String>();
-		Lista.add(" ( ) parenteses ");
+		Lista.add(" ( ) parenteses "); //resposta correta
 		Lista.add(" { } chaves ");
 		Lista.add(" [ ] colchetes ");
 		Lista.add(" ' ' aspas simples ");
