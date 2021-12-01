@@ -16,6 +16,36 @@ public class O_cavaleiro_de_java {
 	static int temp_dialog = Cafeh * 1, temp_narrativa = 20, temp_transicao = 25, temp_creditos = 150;
 	static int ColarCompleto = 0, DesafioDoTroll01 = 0;
 
+	//Esses metodos com "menu" antes no nome sao opçoes do menu
+	public static void menu_intrucao() throws InterruptedException{
+		Delay("Para desfrutar da gameplay dessa aventura, \n"
+				+ "digite as opções que lhe foi apresentado na tela\n Sua vida é baseada em 'café', caso ela chegue a zero\n GAME OVER,"
+				+ " acerte perguntas para ganhar café.", TimeUnit.MILLISECONDS, temp_transicao);
+		
+	}
+	
+	public static void menu_Creditos() throws InterruptedException{
+
+		Delay("\n\nO Cavaleiro de java\nGrupo 12\nIntegrantes: \nEduardo Ramos \nJose Guerra \nRafael Duarte \nSarah Rodrigues \nSamuel Colina \n",
+				TimeUnit.MILLISECONDS, temp_transicao);
+	}
+	
+	public static void menu_sair() throws InterruptedException{
+		Scanner entrada = new Scanner(System.in);
+		String seleciona;
+		
+		Delay("Você deseja mesmo sair?", TimeUnit.MILLISECONDS, temp_transicao);
+		System.out.println("\nS / N");
+		seleciona = entrada.next();
+
+		if (seleciona.equals("S") || seleciona.equals("s")) {
+			Delay("Até um outro dia", TimeUnit.MILLISECONDS, temp_dialog);
+			System.exit(0);
+		}
+		
+	
+	}
+	
 	// O menu do jogo
 	public static void main(String[] args) throws Exception {
 		Scanner entrada = new Scanner(System.in);
@@ -34,31 +64,16 @@ public class O_cavaleiro_de_java {
 				break;
 			case "b":
 			case "B":
-				Delay("Para desfrutar da gameplay dessa aventura, \n"
-						+ "digite as opções que lhe foi apresentado na tela\n", TimeUnit.MILLISECONDS, temp_transicao);
+				menu_intrucao();
 				break;
 			case "c":
 			case "C":
-				System.out.println("O Cavaleiro de java");
-				System.out.println("Grupo 12");
-				System.out.println("Integrantes: ");
-				System.out.println("        ");
-				System.out.println("Eduardo Ramos \nJosé Guerra \nRafael Duarte \nSarah Rodriguês \nSamuel Colina \n");
+				menu_Creditos();
 				break;
 
 			case "d":
 			case "D":
-				Delay("Você deseja mesmo sair?", TimeUnit.MILLISECONDS, temp_transicao);
-				System.out.println("\nS / N");
-				seleciona = entrada.next();
-
-				if (seleciona.equals("S") || seleciona.equals("s")) {
-					Delay("Até um outro dia", TimeUnit.MILLISECONDS, temp_dialog);
-					sair++;
-				}
-				break;
-			default:
-				System.out.println("Por favor, selecione uma opção valida");
+			    menu_sair();
 				break;
 			}
 		} while (sair == 0);
@@ -287,8 +302,10 @@ public class O_cavaleiro_de_java {
 							+ "\nObrigado, não tenho como agradecer, mas venha aqui atrás para um tratamento especial"
 							+ "\nE assim nosso bravo aventureiro esqueceu de sua missão."
 							+ "\nAfinal para ele era mais importante uma mulher, que sua jornada"
-							+ "\nFIM\n\nParabens você concluiu o Final Da Ucraniana", TimeUnit.MILLISECONDS,
+							+ "\nFIM\n\nParabens você concluiu o Final Da Ucraniana", TimeUnit.MILLISECONDS,							
 							temp_dialog);
+					Delay("\n\nO Cavaleiro de java\nGrupo 12\nIntegrantes: \nEduardo Ramos \nJose Guerra \nRafael Duarte \nSarah Rodrigues \nSamuel Colina \n\nObrigado por jogar S2",
+							TimeUnit.MILLISECONDS, temp_creditos);
 					System.exit(0);
 					break;
 				case 2:
@@ -488,7 +505,11 @@ public class O_cavaleiro_de_java {
 				Delay("\nOpção inválida\nVocê deixa o beco", TimeUnit.MILLISECONDS, temp_dialog);
 				break;
 			}
-		} else {
+			
+		}else if(DesafioDoTroll01 == 0) {
+			DesafioDoTroll01();
+			
+		}else {
 			Delay("\nPorfavor não venha mais aqui...\nVocê deixa o beco", TimeUnit.MILLISECONDS, temp_dialog);
 			Parte_Leste();
 
@@ -585,7 +606,7 @@ public class O_cavaleiro_de_java {
 			}
 		} while (sair);
 		Score = Score + 1;// recompensa por acertar a pergunta
-	
+		Cafeh = Cafeh + 1;
 		return Score;
 	}
 
@@ -656,6 +677,7 @@ public class O_cavaleiro_de_java {
 			}
 			if (lista.get(n).equals("Break e Default;")) { // compara a resposta com a alternativa
 				System.out.println("Você conseguiu.");
+				
 				sair = false;
 			} else {
 				if (Cafeh > 1) {
@@ -670,7 +692,7 @@ public class O_cavaleiro_de_java {
 
 		} while (sair);
 		Score = Score + 1;
-		
+		Cafeh = Cafeh + 1;
 		return Score;
 	}
 
@@ -755,7 +777,7 @@ public class O_cavaleiro_de_java {
 				Delay("Llort: Como você acertou???\nNão quero saber, como prometido, sua recompensa:\nVocê Ganhou um colar com gravuras de flores em volta"
 						+ "de um espaço em branco.\nO que eu devo fazer com isso?e onde esta o resto do colar? ",
 						TimeUnit.MILLISECONDS, temp_dialog);
-
+				DesafioDoTroll01 = 1;
 				sair = false;
 			} else {
 				Delay("Llort:Você errou,Vai me passando os cafeinados" + "Você tem " + Cafeh + "cafés contigo",
@@ -778,7 +800,7 @@ public class O_cavaleiro_de_java {
 			}
 		} while (sair);
 		Score = Score + 1;
-		DesafioDoTroll01 = 1;
+		Cafeh = Cafeh + 1;
 		return DesafioDoTroll01;
 	}
 
@@ -848,6 +870,7 @@ public class O_cavaleiro_de_java {
 
 		} while (sair);
 		Score = Score + 1;
+		Cafeh = Cafeh + 1;
 		return Score;
 	}
 
@@ -939,7 +962,7 @@ public class O_cavaleiro_de_java {
 				if (Cafeh > 1) {
 					System.out.println("Resposta errada, tente novamente" + " Você só tem " + Cafeh + " cafés contigo");
 					Cafeh = Cafeh - 1;
-					Score = Score + 1;
+					Score = Score - 1;
 
 				} else {
 					Delay("\r\nGAME OVER - acabou o café...", TimeUnit.MILLISECONDS, temp_dialog);
@@ -948,20 +971,23 @@ public class O_cavaleiro_de_java {
 			}
 		} while (sair);
 		Score = Score + 1;
-		
+		Cafeh = Cafeh + 1;
 		return Score;
 	}
 
 	// "Desafio"
 	public static void Cantadas() throws InterruptedException {
 		Scanner entrada = new Scanner(System.in);
+		int seleciona;
 		Delay("\nAdmirado pela beleza da dama, você tenta conquista-la, qual de seus cortejos prefere?",
 				TimeUnit.MILLISECONDS, temp_dialog);
+		
 		Delay("\n1- Posso te chamar de CSS? Porque eu gosto do seu estilo."
 				+ " \n2- Você é um eixo terrestre? Porque meu mundo gira em torno de você. "
 				+ " \n3- Você deve ser Windows 95, porque você me deixa instável. "
 				+ " \n4- Você me ganhou no ‘Hello World’…", TimeUnit.MILLISECONDS, temp_dialog);
-	
+		seleciona = entrada.nextInt();
+		
 	}
 
 	// Desafio
@@ -1060,7 +1086,7 @@ public class O_cavaleiro_de_java {
 			}
 		} while (sair);
 		Score = Score + 1;
-
+		Cafeh = Cafeh + 1;
 		return Score;
 	}
 
@@ -1163,7 +1189,7 @@ public class O_cavaleiro_de_java {
 		} while (sair);
 
 		Score = Score + 1;
-	
+		Cafeh = Cafeh + 1;
 		return Score;
 	}
 
@@ -1253,7 +1279,7 @@ public class O_cavaleiro_de_java {
 			}
 		} while (sair);
 		Score = Score + 1;
-
+		Cafeh = Cafeh + 1;
 		return Score;
 	}
 
